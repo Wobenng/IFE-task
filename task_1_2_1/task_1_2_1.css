@@ -1,0 +1,108 @@
+form{
+     display:table;
+}
+.表单行{
+	    display:table-row;
+}
+.表单行 p{
+	      display:table-cell;
+		  padding:10px;
+}
+.表单行 p:first-child{
+	                   text-align:right;
+					   padding-left:250px;
+}
+#密码输入提示{
+	           font-size:0.5em;
+			   color:gray;
+		       padding-top:0px;
+}
+#个人描述{
+	      vertical-align:top;
+}
+
+	     
+#顶部{
+	       background-color:#4f4946;
+		   margin:0px;
+		   padding:0px;
+		   height:120px;
+}
+#顶部导航{
+           
+		   position:absolute;
+		   left:700px;
+		   top:45px;
+		   
+}
+#顶部导航  ul  li {
+	           list-style-type:disc;
+		       display:inline;
+			   margin-left:20px;
+			   margin-right:20px;
+			   font-size:1.3em;
+}
+#顶部导航  li  a:link{
+	                 color:black;
+					 text-decoration:none;
+}
+#顶部导航  li  a.selected{
+	                     color:white;
+}
+#顶部导航  li  a:hover{
+	                  font-size:1.4em;
+}
+#顶部导航  li  a:active{
+	                  color:purple;
+}
+
+#logo{
+	  float:left;
+	  margin:5px 15px 5px 15px;
+	 
+}
+.主体内容{
+          box-shadow:2px 2px gray;
+		  background-color:white;
+		  margin:20px;
+		  padding:20px;
+}
+
+body{
+	 background-color:#c9c5b9;
+	 font-family:Monospace;
+	 font-size:1.2em;
+}
+address{float:left;
+}
+time{
+	 margin-left:40px;
+}
+.首行缩进段落{
+	          text-indent:30px;
+}
+.好看的图片{
+	        border:1px solid #c9c5b9;
+			padding:15px;
+			margin:15px;
+			width:150px;
+}
+table{
+	  border-collapse:collapse;
+	  width:100%;
+	  text-align:center;
+}
+#表头行{
+	background-color:#4f4946;
+}
+#表格统计行{
+	        background-color:#c9c5b9;
+}
+footer{
+	    background-color:black;
+		text-align:center;
+		color:white;
+		margin:0px;
+		padding:25px;
+		
+}
