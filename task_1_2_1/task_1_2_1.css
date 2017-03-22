@@ -28,18 +28,12 @@ form{
 		   padding:0px;
 		   height:120px;
 }
-#顶部导航{
-           
-		   position:absolute;
-		   left:700px;
-		   top:45px;
-		   
-}
+
 #顶部导航  ul  li {
 	           list-style-type:disc;
-		       display:inline;
-			   margin-left:20px;
-			   margin-right:20px;
+		       float:right;
+			   width:150px;
+			   padding-top:45px;
 			   font-size:1.3em;
 }
 #顶部导航  li  a:link{
@@ -50,7 +44,7 @@ form{
 	                     color:white;
 }
 #顶部导航  li  a:hover{
-	                  font-size:1.4em;
+	                    color:white;
 }
 #顶部导航  li  a:active{
 	                  color:purple;
