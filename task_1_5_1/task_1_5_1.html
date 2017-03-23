@@ -1,0 +1,652 @@
+<!doctype html>
+<html>
+  <head>
+    <meta  charset="utf-8">
+    <title>task_1_5_1</title>
+	<link  type="text/css"  rel="stylesheet"  href="task_1_5_1.css">
+  </head>
+  
+  <body>
+  
+   <header  id="首页顶部">
+    <img id="logo"  src="image/logo.png" alt="logo"/>
+   <nav  id="顶部导航">
+   <ul>
+     <li><a  target="_blank"  href="首页.html"  class="selected">首页</a></li>
+     <li><a  target="_blank"  href="导航链接二.html">导航链接二</a></li>
+     <li><a  target="_blank"  href="导航链接三.html">导航链接三</a></li>
+     <li><a  target="_blank"  href="导航链接四.html">导航链接四</a></li>
+   </ul>
+   </nav>
+  </header>
+  
+  	<section  id="边栏">
+	  <h2>这是侧栏标题</h2>
+	  <h3>注册窗口标题</h3>
+	    <form>
+		  <div  class="表单行">
+		    <p>
+		      <label  for="请输入邮箱地址">请输入邮箱地址</label>
+		    </p>
+			<p>
+			  <input  type="text"  name="邮箱地址"  id="请输入邮箱地址"  placeholder="name@example.com"  required="邮箱格式不正确"/>
+			</p>  
+		  </div>
+		  <div  class="表单行">
+		    <p>
+			  <label  for="请输入密码">请输入密码</label>
+			</p>
+			<p>
+			<input  type="password"  name="密码"  id="请输入密码"/>
+			</p>
+		  </div>
+		  <div  class="表单行">
+		    <p>
+			  <label  for="请重复输入密码">请重复输入密码</label><br/>
+            </p>
+			<p>
+			  <input  type="password"  name="密码"  id="请重复输入密码"/>
+			</p>
+			</div>
+		  <div  class="表单行">
+		    <p></p>
+			<p  id="密码输入提示">
+			  密码请为6-16位英文数字
+			</p>
+		  </div>
+		  <div  class="表单行">
+		    <p>
+			  性别:
+			</p>
+			<p>
+			  <input  type="radio"  name="性别"  value="女"  id="女">
+			  <label  for="女">女</label> 
+			  <input  type="radio"  name="性别"  value="男"  id="男">
+			  <label  for="男">男</label>
+			</p>
+		  </div>
+		  <div  class="表单行">
+     		<p>
+			  城市:
+			</p>
+			<p>
+			  <select  name="城市">
+			    <option  value="北京">北京</option>
+			    <option  value="上海">上海</option>
+			    <option  value="重庆">重庆</option>
+			    <option  value="天津">天津</option>
+			    <option  value="台湾">台湾</option>
+			    <option  value="澳门">澳门</option>
+			    <option  value="香港">香港</option>
+				<optgroup  label="安徽省">
+				  <option  value="芜湖市">芜湖市</option>
+				  <option  value="合肥市">合肥市</option>
+				  <option  value="六安市">六安市</option>
+				  <option  value="宿州市">宿州市</option>
+				  <option  value="阜阳市">阜阳市</option>
+				  <option  value="安庆市">安庆市</option>
+				  <option  value="马鞍山市">马鞍山市</option>
+				  <option  value="蚌埠市">蚌埠市</option>
+				  <option  value="淮北市">淮北市</option>
+				  <option  value="淮南市">淮南市</option>
+				  <option  value="宣城市">宣城市</option>
+				  <option  value="黄山市">黄山市</option>
+				  <option  value="铜陵市">铜陵市</option>
+				  <option  value=" 亳州市"> 亳州市</option>
+				  <option  value=" 池州市"> 池州市</option>
+				  <option  value=" 巢湖市"> 巢湖市</option>
+				  <option  value=" 滁州市"> 滁州市</option>
+				</optgroup>
+				<optgroup  label="福建省">
+				  <option  value="漳州市">漳州市</option>
+				  <option  value="厦门市">厦门市</option>
+				  <option  value="泉州市">泉州市</option>
+				  <option  value="福州市">福州市</option>
+				  <option  value="莆田市">莆田市</option>
+				  <option  value="宁德市">宁德市</option>
+				  <option  value="三明市">三明市</option>
+				  <option  value="南平市">南平市</option>
+				  <option  value="龙岩市">龙岩市</option>
+				</optgroup>
+				<optgroup  label="广东省">
+				  <option  value="东莞市">东莞市</option>
+				  <option  value="广州市">广州市</option>
+				  <option  value="中山市">中山市</option>
+				  <option  value="深圳市">深圳市</option>
+				  <option  value="惠州市">惠州市</option>
+				  <option  value="江门市">江门市</option>
+				  <option  value="珠海市">珠海市</option>
+				  <option  value="汕头市">汕头市</option>
+				  <option  value="佛山市">佛山市</option>
+				  <option  value="湛江市">湛江市</option>
+				  <option  value="河源市">河源市</option>
+				  <option  value="肇庆市">肇庆市</option>
+				  <option  value="清远市">清远市</option>
+				  <option  value="潮州市">潮州市</option>
+				  <option  value="韶关市">韶关市</option>
+				  <option  value="揭阳市">揭阳市</option>
+				  <option  value="阳江市">阳江市</option>
+				  <option  value="梅州市">梅州市</option>
+				  <option  value="云浮市">云浮市　</option>
+				  <option  value="茂名市">茂名市</option>
+				  <option  value="汕尾市">汕尾市</option>
+				</optgrou
+				<optgroup  label="广西壮族自治区">
+				  <option  value="贵港市">贵港市</option>
+				  <option  value="玉林市">玉林市</option>
+				  <option  value="北海市">北海市</option>
+				  <option  value="南宁市">南宁市</option>
+				  <option  value="柳州市">柳州市</option>
+				  <option  value="桂林市">桂林市</option>
+				  <option  value="梧州市">梧州市</option>
+				  <option  value="钦州市">钦州市</option>
+				  <option  value="来宾市">来宾市</option>
+				  <option  value="河池市">河池市</option>
+				  <option  value="百色市">百色市</option>
+				  <option  value="贺州市">贺州市</option>
+				  <option  value="崇左市">崇左市</option>
+				  <option  value="防城港市">防城港市</option>
+				</optgroup>
+				<optgroup  label="贵州省">
+				  <option  value="贵阳市">贵阳市</option>
+				  <option  value="黔东南州">黔东南州</option>
+				  <option  value="黔南州">黔南州</option>
+				  <option  value="遵义市">遵义市</option>
+				  <option  value="黔西南州">黔西南州</option>
+				  <option  value="毕节地区">毕节地区</option>
+				  <option  value="铜仁地区">铜仁地区</option>
+				  <option  value="安顺市">安顺市</option>
+				  <option  value="六盘水市">六盘水市</option>
+				</optgroup>
+				<optgroup  label="甘肃省">
+				  <option  value="西宁市">西宁市</option>
+				  <option  value="海西州">海西州</option>
+				  <option  value="海东地区">海东地区</option>
+				  <option  value="海北州">海北州</option>
+				  <option  value="果洛州">果洛州</option>
+				  <option  value="玉树州">玉树州</option>
+				  <option  value="黄南藏族自治州">黄南藏族自治州</option>
+				</optgroup>
+				<optgroup  label="河南省">
+				  <option  value="郑州市">郑州市</option>
+				  <option  value="南阳市">南阳市</option>
+				  <option  value="新乡市">新乡市</option>
+				  <option  value="安阳市">安阳市</option>
+				  <option  value="洛阳市">洛阳市</option>
+				  <option  value="信阳市">信阳市</option>
+				  <option  value="平顶山市">平顶山市</option>
+				  <option  value="周口市">周口市</option>
+				  <option  value="商丘市">商丘市</option>
+				  <option  value="开封市">开封市</option>
+				  <option  value="焦作市">焦作市</option>
+				  <option  value="驻马店市">驻马店市</option>
+				  <option  value="濮阳市">濮阳市</option>
+				  <option  value="三门峡市">三门峡市</option>
+				  <option  value="漯河市">漯河市</option>
+				  <option  value="许昌市">许昌市</option>
+				  <option  value="鹤壁市">鹤壁市</option>
+				  <option  value="济源市">济源市</option>
+				</optgroup>
+				</optgroup>
+				<optgroup  label="河北省">
+				  <option  value="石家庄市">石家庄市</option>
+				  <option  value="唐山市">唐山市</option>
+				  <option  value="保定市">保定市</option>
+				  <option  value="邯郸市">邯郸市</option>
+				  <option  value="邢台市">邢台市</option>
+				  <option  value="河北区">河北区</option>
+				  <option  value="沧州市">沧州市</option>
+				  <option  value="秦皇岛市">秦皇岛市</option>
+				  <option  value="张家口市">张家口市</option>
+				  <option  value="衡水市">衡水市</option>
+				  <option  value="廊坊市">廊坊市</option>
+				  <option  value="承德市">承德市</option>
+				</optgroup>
+				<optgroup  label="湖南省">
+				  <option  value="长沙市">长沙市</option>
+				  <option  value="邵阳市">邵阳市</option>
+				  <option  value="常德市">常德市</option>
+				  <option  value="衡阳市">衡阳市</option>
+				  <option  value="株洲市">株洲市</option>
+				  <option  value="湘潭市">湘潭市</option>
+				  <option  value="永州市">永州市</option>
+				  <option  value="岳阳市">岳阳市</option>
+				  <option  value="怀化市">怀化市</option>
+				  <option  value="郴州市">郴州市</option>
+				  <option  value="娄底市">娄底市</option>
+				  <option  value="益阳市">益阳市</option>
+				  <option  value="张家界市">张家界市</option>
+				  <option  value="湘西州">湘西州</option>
+				</optgroup>
+				<optgroup  label="湖北省">
+				  <option  value="武汉市">武汉市</option>
+				  <option  value="宜昌市">宜昌市</option>
+				  <option  value="襄樊市">襄樊市</option>
+				  <option  value="荆州市">荆州市</option>
+				  <option  value="恩施州">恩施州</option>
+				  <option  value="黄冈市">黄冈市</option>
+				  <option  value="孝感市">孝感市</option>
+				  <option  value="十堰市">十堰市</option>
+				  <option  value="咸宁市">咸宁市</option>
+				  <option  value="黄石市">黄石市</option>
+				  <option  value="仙桃市">仙桃市</option>
+				  <option  value="天门市">天门市</option>
+				  <option  value="随州市">随州市</option>
+				  <option  value="荆门市">荆门市</option>
+				  <option  value="潜江市">潜江市</option>
+				  <option  value="鄂州市">鄂州市</option>
+				  <option  value="神农架林区">神农架林区</option>
+				</optgroup>
+				<optgroup  label="海南省">
+				  <option  value="三亚市">三亚市</option>
+				  <option  value="海口市">海口市</option>
+				  <option  value="琼海市">琼海市</option>
+				  <option  value="文昌市">文昌市</option>
+				  <option  value="东方市">东方市</option>
+				  <option  value="昌江县">昌江县</option>
+				  <option  value="陵水县">陵水县</option>
+				  <option  value="乐东县">乐东县</option>
+				  <option  value="保亭县">保亭县</option>
+				  <option  value="五指山市">五指山市</option>
+				  <option  value="澄迈县">澄迈县</option>
+				  <option  value="万宁市">万宁市</option>
+				  <option  value="儋州市">儋州市</option>
+				  <option  value="临高县">临高县</option>
+				  <option  value="白沙县">白沙县</option>
+				  <option  value="定安县">定安县</option>
+				  <option  value="琼中县">琼中县</option>
+				  <option  value="屯昌县">屯昌县</option>
+				</optgroup>
+				<optgroup  label="黑龙江省">
+				  <option  value="齐齐哈尔市">齐齐哈尔市</option>
+				  <option  value="哈尔滨市">哈尔滨市</option>
+				  <option  value="大庆市">大庆市</option>
+				  <option  value="佳木斯市">佳木斯市</option>
+				  <option  value="双鸭山市">双鸭山市</option>
+				  <option  value="牡丹江市">牡丹江市</option>
+				  <option  value="鸡西市">鸡西市</option>
+				  <option  value="黑河市">黑河市</option>
+				  <option  value="绥化市">绥化市</option>
+				  <option  value="鹤岗市">鹤岗市</option>
+				  <option  value="伊春市">伊春市</option>
+				  <option  value="大兴安岭地区">大兴安岭地区</option>
+				  <option  value="七台河市">七台河市</option>
+				</optgroup>
+				<optgroup  label="江苏省">
+				  <option  value="苏州市">苏州市</option>
+				  <option  value="徐州市">徐州市</option>
+				  <option  value="盐城市">盐城市</option>
+				  <option  value="无锡市">无锡市</option>
+				  <option  value="南京市">南京市</option>
+				  <option  value="南通市">南通市</option>
+				  <option  value="连云港市">连云港市</option>
+				  <option  value="常州市">常州市</option>
+				  <option  value="镇江市">镇江市</option>
+				  <option  value="扬州市">扬州市</option>
+				  <option  value="淮安市">淮安市</option>
+				  <option  value="泰州市">泰州市</option>
+				  <option  value="宿迁市">宿迁市</option>
+				</optgroup>
+				<optgroup  label="江西省">
+				  <option  value="南昌市">南昌市</option>
+				  <option  value="赣州市">赣州市</option>
+				  <option  value="上饶市">上饶市</option>
+				  <option  value="吉安市">吉安市</option>
+				  <option  value="九江市">九江市</option>
+				  <option  value="新余市">新余市</option>
+				  <option  value="抚州市">抚州市</option>
+				  <option  value="宜春市">宜春市</option>
+				  <option  value="景德镇市">景德镇市</option>
+				  <option  value="萍乡市">萍乡市</option>
+				  <option  value="鹰潭市">鹰潭市</option>
+				</optgroup>
+				<optgroup  label="吉林省">
+				  <option  value="吉林市">吉林市</option>
+				  <option  value="长春市">长春市</option>
+				  <option  value="白山市">白山市</option>
+				  <option  value="延边州">延边州</option>
+				  <option  value="白城市">白城市</option>
+				  <option  value="松原市">松原市</option>
+				  <option  value="辽源市">辽源市</option>
+				  <option  value="通化市">通化市</option>
+				  <option  value="四平市">四平市</option>
+				</optgroup>
+				<optgroup  label="辽宁省">
+				  <option  value="大连市">大连市</option>
+				  <option  value="沈阳市">沈阳市</option>
+				  <option  value="丹东市">丹东市</option>
+				  <option  value="辽阳市">辽阳市</option>
+				  <option  value="葫芦岛市">葫芦岛市</option>
+				  <option  value="朝阳市">朝阳市</option>
+				  <option  value="营口市">营口市</option>
+				  <option  value="鞍山市">鞍山市</option>
+				  <option  value="抚顺市">抚顺市</option>
+				  <option  value="阜新市">阜新市</option>
+				  <option  value="盘锦市">盘锦市</option>
+				  <option  value="本溪市">本溪市</option>
+				  <option  value="铁岭市">铁岭市</option>
+				</optgroup>
+				<optgroup  label="内蒙古自治区">
+				  <option  value="赤峰市">赤峰市</option>
+				  <option  value="包头市">包头市</option>
+				  <option  value="通辽市">通辽市/option>
+				  <option  value="呼和浩特市">呼和浩特市</option>
+				  <option  value="鄂尔多斯市">鄂尔多斯市</option>
+				  <option  value="乌海市">乌海市</option>
+				  <option  value="呼伦贝尔市">呼伦贝尔市</option>
+				  <option  value="兴安盟">兴安盟</option>
+				  <option  value="巴彦淖尔盟">巴彦淖尔盟</option>
+				  <option  value="乌兰察布盟">乌兰察布盟</option>
+				  <option  value="锡林郭勒盟">锡林郭勒盟</option>
+				  <option  value="阿拉善盟">阿拉善盟</option>
+				</optgroup>
+				<optgroup  label="宁夏回族自治区">
+				  <option  value="银川市">银川市</option>
+				  <option  value="吴忠市">吴忠市</option>
+				  <option  value="中卫市">中卫市/option>
+				  <option  value="石嘴山市">石嘴山市</option>
+				  <option  value="固原市">固原市</option>
+				</optgroup>
+				<optgroup  label="青海省">
+				  <option  value="西宁市">西宁市</option>
+				  <option  value="海西州">海西州</option>
+				  <option  value="海东地区">海东地区</option>
+				  <option  value="海北州">海北州</option>
+				  <option  value="果洛州">果洛州</option>
+				  <option  value="玉树州">玉树州</option>
+				  <option  value="黄南藏族自治州">黄南藏族自治州</option>
+				</optgroup>
+				<optgroup  label="山东省">
+				  <option  value="济南市">济南市</option>
+				  <option  value="青岛市">青岛市</option>
+				  <option  value="临沂市">临沂市</option>
+				  <option  value="济宁市">济宁市</option>
+				  <option  value="菏泽市">菏泽市</option>
+				  <option  value="烟台市">烟台市</option>
+				  <option  value="淄博市">淄博市</option>
+				  <option  value="泰安市">泰安市</option>
+				  <option  value="潍坊市">潍坊市</option>
+				  <option  value="日照市">日照市</option>
+				  <option  value="威海市">威海市</option>
+				  <option  value="滨州市">滨州市</option>
+				  <option  value="东营市">东营市</option>
+				  <option  value="聊城市">聊城市</option>
+				  <option  value="德州市">德州市</option>
+				  <option  value="莱芜市">莱芜市</option>
+				  <option  value="枣庄市">枣庄市</option>
+				</optgroup>
+				<optgroup  label="陕西省">
+				  <option  value="西安市">西安市</option>
+				  <option  value="咸阳市">咸阳市</option>
+				  <option  value="宝鸡市">宝鸡市</option>
+				  <option  value="汉中市">汉中市</option>
+				  <option  value="渭南市">渭南市</option>
+				  <option  value="安康市">安康市</option>
+				  <option  value="榆林市">榆林市</option>
+				  <option  value="商洛市">商洛市</option>
+				  <option  value="延安市">延安市</option>
+				  <option  value="铜川市">铜川市</option>
+				</optgroup>
+				<optgroup  label="四川省">
+				  <option  value="成都市">成都市</option>
+				  <option  value="绵阳市">绵阳市</option>
+				  <option  value="广元市">广元市</option>
+				  <option  value="达州市">达州市</option>
+				  <option  value="南充市">南充市</option>
+				  <option  value="德阳市">德阳市</option>
+				  <option  value="广安市">广安市</option>
+				  <option  value="阿坝州">阿坝州</option>
+				  <option  value="巴中市">巴中市</option>
+				  <option  value="遂宁市">遂宁市</option>
+				  <option  value="内江市">内江市</option>
+				  <option  value="凉山州">凉山州</option>
+				  <option  value="攀枝花市">攀枝花市</option>
+				  <option  value="乐山市">乐山市</option>
+				  <option  value="自贡市">自贡市</option>
+				  <option  value="泸州市">泸州市</option>
+				  <option  value="雅安市">雅安市</option>
+				  <option  value="宜宾市">宜宾市</option>
+				  <option  value="资阳市">资阳市</option>
+				  <option  value="眉山市">眉山市</option>
+				  <option  value="甘孜州">甘孜州</option>
+				</optgroup>
+				<optgroup  label="山西省">
+				  <option  value="太原市">太原市</option>
+				  <option  value="大同市">大同市</option>
+				  <option  value="运城市">运城市</option>
+				  <option  value="长治市">长治市</option>
+				  <option  value="晋城市">晋城市</option>
+				  <option  value="忻州市">忻州市</option>
+				  <option  value="临汾市">临汾市</option>
+				  <option  value="吕梁市">吕梁市</option>
+				  <option  value="晋中市">晋中市</option>
+				  <option  value="阳泉市">阳泉市</option>
+				  <option  value="朔州市">朔州市</option>
+				</optgroup>
+				<optgroup  label="新疆维吾尔自治区">
+				  <option  value="乌鲁木齐市">乌鲁木齐市</option>
+				  <option  value="伊犁州">伊犁州</option>
+				  <option  value="昌吉州">昌吉州</option>
+				  <option  value="石河子市">石河子市</option>
+				  <option  value="哈密地区">哈密地区</option>
+				  <option  value="阿克苏地区">阿克苏地区</option>
+				  <option  value="巴音郭楞州">巴音郭楞州</option>
+				  <option  value="喀什地区">喀什地区</option>
+				  <option  value="塔城地区">塔城地区</option>
+				  <option  value="克拉玛依市">克拉玛依市</option>
+				  <option  value="和田地区">和田地区</option>
+				  <option  value="阿勒泰州">阿勒泰州</option>
+				  <option  value="吐鲁番地区">吐鲁番地区</option>
+				  <option  value="阿拉尔市">阿拉尔市</option>
+				  <option  value="博尔塔拉州">博尔塔拉州</option>
+				  <option  value="五家渠市">五家渠市</option>
+				  <option  value="克孜勒苏州">克孜勒苏州</option>
+				  <option  value="图木舒克市">图木舒克市</option>
+				</optgroup>
+				<optgroup  label="西藏自治区">
+				  <option  value="拉萨市">拉萨市</option>
+				  <option  value="山南地区">山南地区</option>
+				  <option  value="林芝地区">林芝地区</option>
+				  <option  value="日喀则地区">日喀则地区</option>
+				  <option  value="阿里地区">阿里地区</option>
+				  <option  value="昌都地区">昌都地区</option>
+				  <option  value="那曲地区">那曲地区</option>
+				</optgroup>
+				<optgroup  label="云南省">
+				  <option  value="昆明市">昆明市</option>
+				  <option  value="红河州">红河州</option>
+				  <option  value="大理州">大理州</option>
+				  <option  value="文山州">文山州</option>
+				  <option  value="德宏州">德宏州</option>
+				  <option  value="曲靖市">曲靖市</option>
+				  <option  value="昭通市">昭通市</option>
+				  <option  value="楚雄州">楚雄州</option>
+				  <option  value="保山市">保山市</option>
+				  <option  value="玉溪市">玉溪市</option>
+				  <option  value="丽江地区">丽江地区</option>
+				  <option  value="临沧地区">临沧地区</option>
+				  <option  value="思茅地区">思茅地区</option>
+				  <option  value="西双版纳州">西双版纳州</option>
+				  <option  value="怒江州">怒江州</option>
+				  <option  value="迪庆州">迪庆州</option>
+				</optgroup>
+				<optgroup  label="浙江省">
+				  <option  value="温州市">温州市</option>
+				  <option  value="宁波市">宁波市</option>
+				  <option  value="杭州市">杭州市</option>
+				  <option  value="台州市">台州市</option>
+				  <option  value="嘉兴市">嘉兴市</option>
+				  <option  value="金华市">金华市</option>
+				  <option  value="湖州市">湖州市</option>
+				  <option  value="绍兴市">绍兴市</option>
+				  <option  value="舟山市">舟山市</option>
+				  <option  value="丽水市">丽水市</option>
+				  <option  value="衢州市">衢州市</option>
+				</optgroup>
+				</p>
+			  </select>
+		  </div>
+		  <div  class="表单行">
+		    <p>
+			爱好:
+			</p>
+		    <p>
+			  <input  type="checkbox"  name="爱好"  value="运动"  id="运动"/>
+			  <label  for="运动">运动</label>
+			  <input  type="checkbox"  name="爱好"  value="艺术"/>
+			  <label  for="艺术">艺术</label>
+			  <input  type="checkbox"  name="爱好"  value="科学"/>
+			  <label  for="科学">科学</label>
+			</p>
+		  </div>
+		  <div  class="表单行">
+		    <p  id="个人描述">
+			  个人描述
+			</p>
+			<P>
+			  <textarea  name="个人描述" ></textarea>
+			</p>
+		  </div>
+        </form>
+		<input  type="submit"  value="确认提交"  style="width:100%;height:50px;background-color:#009bd3;border:none;border-radius:10px;"/>
+	</section>
+    
+   <div  id="主体内容总框架">
+   <section  class="主体内容">
+    <h2>文章一级标题</h2>
+	<h3>文章二级标题</h3>
+    <address>wobenng</address>
+    <time  datetime="2017-03-09">9/3/2017</time>
+    <p  class="首行缩进段落">段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落
+       段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落
+       段落段落段落段落段落段落段落段落段落段落<a  href="http://ife.baidu.com"  title="百度前端技
+	   术学院的链接">这里有一个链接链接到http://ife.baidu.com</a>段落段落段段落段落段段落段落段段落段落段段落段落
+	   段落段落段段落段落段段落段落段段落段落段段落段落段段落段落段<strong>我是粗体字</strong>段落段落完美结束.
+	</p>
+	<img  src="image/task_1_1_101.jpg"  alt="一张图片" />
+	<p>段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落
+	   段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落
+	   段落段落<a  target="_blank"  href="http://ife.baidu.com"  title="百度前端技术学院的链接">这里有一个链接点击
+	   后打开新窗口链接到http://ife.baidu.com</a>段落段落段落段落段落段落段落段落段落段落段落段落段落段完美结束.
+	</p>
+   </section>
+   
+   <section  class="主体内容">
+	<h2>另一篇文章一级标题</h2>
+	<h3>另一篇文章二级标题</h2>
+	<address>wobenng</address>
+	<time  datetime="2017-03-09">9/3/2017</time>
+	<p  class="首行缩进段落">段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落
+	   段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落
+	   段落段落段落换行<br/>
+	   段落段落段落段落段落段落段落段落段落<a  href="https://www.baidu.com"  title="百度链接">这是一个链接到百度的
+	   链接</a>段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落
+	</p>
+	<ul>
+	  <li>列表项目一</li>
+	  <li>列表项目二</li>
+	  <li>列表项目三</li>
+	</ul>
+   </section>
+   
+   <section  class="主体内容">
+	<h4>图片</h4>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片" />
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片" />
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+	  <figure  class="好看的图片">
+	    <figcaption>好看的图片</figcaption>
+        <img  src="image/task_1_1_101.jpg"  alt="好看的图片"/>
+	  </figure>
+   </section>
+   
+   <section  class="主体内容">
+	<h2>最后一篇文章一级标题</h2>
+	<h3>最后一篇文章二级标题</h3>
+	<address>wobenng</address>
+	<time  datetime="2017-03-09">9/3/2017</time>
+	<ol>
+	  <li>排名1</li>
+	  <li>排名2</li>
+	  <li>排名3</li>
+	</ol>
+	<table  border="1px">
+	  <caption>一个表格</caption>
+	  <tr  id="表头行">
+	    <th>表头</th>
+	    <th>表头</th>
+	    <th>表头</th>
+	  </tr>
+	  <tr>
+	    <td>单元格内容</td>
+	    <td>单元格内容</td>
+	    <td><a  href="#">操作</a></td>
+	  </tr>
+	  <tr>
+	    <td>单元格内容</td>
+	    <td>单元格内容</td>
+	    <td><a  href="#">操作</a></td>
+	  </tr>
+	  <tr>
+	    <td>单元格内容</td>
+	    <td>单元格内容</td>
+	    <td><a  href="#">操作</a></td>
+	  </tr>
+	  <tr  id="表格统计行">
+	    <td>总计</td>
+		<td  colspan="2">1000</td>
+	  </tr>
+	</table>
+   </section>
+   </div>
+	<footer>
+	  版权所有&copy
+	</footer>
+  </body>
+</html>
+  
+		
+			  
+			
+			  
+		  
+	  
+	  
+	
+	  
+		
+		
+	
