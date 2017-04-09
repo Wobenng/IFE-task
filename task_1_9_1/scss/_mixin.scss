@@ -1,0 +1,56 @@
+@mixin  border-radius($w,$h,$radius){
+width:$w;
+height:$h;
+border-radius:$radius;
+}
+$bgcolorlist-1:#1dbd96;
+$bgcolorlist-2:#007bd0;
+$bgcolorlist-3:#e8404d;
+$bgcolorlist-4:yellow;
+$bgcolorlist: $bgcolorlist-1  $bgcolorlist-2  $bgcolorlist-3 $bgcolorlist-4;
+@for  $i  from 1 to  length($bgcolorlist)+1{
+.color-rectangular-#{$i}{
+background-color:nth($bgcolorlist,$i);
+}
+}
+@for  $i  from 1 to  length($bgcolorlist)+1{
+.Statistical-table-#{$i}{
+border-left:solid  3px  nth($bgcolorlist,$i);
+}
+}
+$hotwidthlist-1:160px;
+$hotwidthlist-2:150px;
+$hotwidthlist-3:140px;
+$hotwidthlist-4:130px;
+$hotwidthlist-5:120px;
+$hotwidthlist-6:110px;
+$hotwidthlist-7:100px;
+$hotwidthlist-8:90px;
+$hotwidthlist-9:80px;
+$hotwidthlist-10:70px;
+$hotwidthlist:$hotwidthlist-1  $hotwidthlist-2  $hotwidthlist-3  $hotwidthlist-4  $hotwidthlist-5  $hotwidthlist-6  $hotwidthlist-7  $hotwidthlist-8  $hotwidthlist-9  $hotwidthlist-10;
+@for  $i  from 1 to  length($hotwidthlist)+1{
+.hot .hot-bar .inner-#{$i}{
+width:nth($hotwidthlist,$i);
+height:4px;
+display:block;
+}
+}
+$hotcolorlist-1:red;
+$hotcolorlist-2:red;
+$hotcolorlist-3:orange;
+$hotcolorlist-4:blue;
+$hotcolorlist-5:blue;
+$hotcolorlist-6:blue;
+$hotcolorlist-7:blue;
+$hotcolorlist-8:blue;
+$hotcolorlist-9:blue;
+$hotcolorlist-10:blue;
+
+$hotcolorlist: $hotcolorlist-1  $hotcolorlist-2  $hotcolorlist-3 $hotcolorlist-4 $hotcolorlist-5 $hotcolorlist-6 $hotcolorlist-7  $hotcolorlist-8  $hotcolorlist-9  $hotcolorlist-10 ;
+@for  $i  from 1 to  length($hotcolorlist)+1{
+.inner-#{$i}{
+background-color:nth($hotcolorlist,$i);
+}
+}
+                    
