@@ -1,0 +1,239 @@
+//_variables
+$blue:#72d5d6;
+$bgcolor:#e5e5e5;
+$border-color:#ffa232;
+$header-H:2rem;
+$nav-H:2rem;
+
+//_%placeholder
+%center{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+%module{
+h2{
+		  font-size:1rem;
+		  opacity:0.8;
+		  border-bottom:0.1rem  solid  $bgcolor;
+		  padding:0.3rem;
+		  }
+		  .table-outer{
+		  width:100%;
+		  padding:0.8rem  0rem;
+		  }
+		  table{
+		  border-spacing:0.5rem;
+		  margin-left:-0.5rem;
+		  }
+          .table-img{
+		  width:20%;
+		  border:0.1rem  solid  $border-color;
+		  }
+		  img{
+		  width:100%;
+		  vertical-align:bottom;
+		  }
+		  .article{
+		  width:30%;
+		  height:1rem;
+		  line-height:1rem;
+		  text-align:center;
+		  font-size:0.8rem;
+		  background-color:$bgcolor;
+		  }
+}
+
+//media
+@media  screen  and(min-width:320px)and(max-width:480px){
+html{
+font-size:22px;
+}
+}
+@media  screen  and(min-width:481px)and(max-width:768px){
+html{
+font-size:28px;
+}
+}
+@media  screen  and(min-width:769px)and(max-width:980px){
+html{
+font-size:33px;
+}
+}
+@media  screen  and(min-width:981px){
+html{
+font-size:44px;
+}
+}
+
+
+
+//layout
+html,header,body,h1,ul,li,div,figure,table,h2,section,article,p{
+padding:0px;
+margin:0px;
+box-sizing:border-box;
+}
+body{
+header{
+       h1{
+	   width:100%;
+	   height:$header-H;
+	   background-color:#72d5d6;
+	   color:white;
+	   font-size:1rem;
+	   line-height:$header-H;
+	   text-align:center;
+	   }
+	   div{
+	   position:absolute;
+	   left:1rem;
+	   top:0;
+	   font-size:0.8rem;
+	   color:white;
+	   height:$header-H;
+	   line-height:$header-H;
+	   }
+	   div img{
+	   vertical-align:middle;
+	   margin-right:0.2rem;
+	   }
+}
+nav{
+    ul{
+	padding:0px;
+	height:$nav-H;
+	width:100%;
+	}
+	& li{
+	display:inline-block;
+	width:20%;
+	height:$nav-H;
+	line-height:$nav-H;
+	text-align:center;
+	font-size:0.8rem;
+	}
+	.scrollbar{
+	width:20%;
+	height:0.1rem;
+	background-color:$blue;
+	position:absolute;
+	left:0px;
+	top:3.9rem;
+	}
+}
+.bear-figure{
+             width:100%;
+}
+.bear-figure  img{
+                  width:100%;
+}
+.tagbar{
+        padding:0.8rem 0.8rem  0rem  0.8rem;
+        width:100%;
+	    @extend  %center;
+}
+.tagbar{
+        figure{
+        padding-bottom:0.8rem;
+        width:20%;
+        text-align:center;
+        font-size:0.6rem;
+        border-bottom:0.1rem  solid  $bgcolor;
+        }
+		figure img{
+		width:50%;
+		}
+}
+.columns{
+         width:100%;
+         padding:0.8rem  0rem;
+         @extend  %center;
+}
+.columns{
+         figure{
+		 width:32%;
+		 text-align:center;
+		 box-sizing:border-box;
+		 }
+		 figure  img{
+		 width:100%;
+		 }
+		 .up{
+		 font-size:1rem;
+		 }
+		 .down{
+		 font-size:0.8rem;
+		 opacity:0.8;
+		 }
+  .border{
+          border-left:0.1rem solid  $bgcolor;
+          border-right:0.1rem solid  $bgcolor;
+         }
+}
+.module-1{
+          width:100%;
+		  padding:0rem 0.8rem;
+		  border-top:0.8rem  solid  $bgcolor;
+		  }
+.module-1{
+          @extend  %module;
+}
+.module-2{
+          width:100%;
+		  padding:0rem 0.8rem;
+		  border-top:0.8rem  solid  $bgcolor;
+		  }
+.module-2{
+          @extend  %module;
+}
+section{
+        width:100%;
+		border-top:0.8rem  solid  $bgcolor;
+}
+section{
+        article{
+		width:100%;
+		padding:0.5rem;
+		border-bottom:0.1rem  solid  $bgcolor;
+		position:relative;
+		overflow:hidden;
+		}
+		.bear-article{
+		width:30%;
+        float:left;
+		margin-right:0.8rem;
+		}
+		.bear-article  img{
+		width:100%;
+		vertical-align:bottom;
+		}
+		h2{
+		font-size:1rem;
+		}
+		.time{
+		font-size:0.8rem;
+		opacity:0.5;
+		position:absolute;
+		bottom:0.5rem;
+		left:32%;
+		}
+		.bottom-image{
+		display:flex;
+		justify-content:space-between;
+		
+		}
+		.bottom-image  div{
+		width:33%;
+		margin:0.5rem  0rem;
+		}
+		.bottom-image  img{
+		width:100%;
+		vertical-align:bottom;
+		}
+		.last{
+		font-size:0.8rem;
+		opacity:0.5;
+		}
+}
+}

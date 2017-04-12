@@ -1,0 +1,162 @@
+body .tagbar, body .columns {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+body .module-1 h2, body .module-2 h2 {
+  font-size: 1rem;
+  opacity: 0.8;
+  border-bottom: 0.1rem solid #e5e5e5;
+  padding: 0.3rem; }
+body .module-1 .table-outer, body .module-2 .table-outer {
+  width: 100%;
+  padding: 0.8rem  0rem; }
+body .module-1 table, body .module-2 table {
+  border-spacing: 0.5rem;
+  margin-left: -0.5rem; }
+body .module-1 .table-img, body .module-2 .table-img {
+  width: 20%;
+  border: 0.1rem solid #ffa232; }
+body .module-1 img, body .module-2 img {
+  width: 100%;
+  vertical-align: bottom; }
+body .module-1 .article, body .module-2 .article {
+  width: 30%;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: #e5e5e5; }
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  html {
+    font-size: 22px; } }
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  html {
+    font-size: 28px; } }
+@media screen and (min-width: 769px) and (max-width: 980px) {
+  html {
+    font-size: 33px; } }
+@media screen and (min-width: 981px) {
+  html {
+    font-size: 44px; } }
+html, header, body, h1, ul, li, div, figure, table, h2, section, article, p {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; }
+
+body header h1 {
+  width: 100%;
+  height: 2rem;
+  background-color: #72d5d6;
+  color: white;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center; }
+body header div {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  font-size: 0.8rem;
+  color: white;
+  height: 2rem;
+  line-height: 2rem; }
+body header div img {
+  vertical-align: middle;
+  margin-right: 0.2rem; }
+body nav ul {
+  padding: 0px;
+  height: 2rem;
+  width: 100%; }
+body nav li {
+  display: inline-block;
+  width: 20%;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 0.8rem; }
+body nav .scrollbar {
+  width: 20%;
+  height: 0.1rem;
+  background-color: #72d5d6;
+  position: absolute;
+  left: 0px;
+  top: 3.9rem; }
+body .bear-figure {
+  width: 100%; }
+body .bear-figure img {
+  width: 100%; }
+body .tagbar {
+  padding: 0.8rem 0.8rem  0rem  0.8rem;
+  width: 100%; }
+body .tagbar figure {
+  padding-bottom: 0.8rem;
+  width: 20%;
+  text-align: center;
+  font-size: 0.6rem;
+  border-bottom: 0.1rem solid #e5e5e5; }
+body .tagbar figure img {
+  width: 50%; }
+body .columns {
+  width: 100%;
+  padding: 0.8rem  0rem; }
+body .columns figure {
+  width: 32%;
+  text-align: center;
+  box-sizing: border-box; }
+body .columns figure img {
+  width: 100%; }
+body .columns .up {
+  font-size: 1rem; }
+body .columns .down {
+  font-size: 0.8rem;
+  opacity: 0.8; }
+body .columns .border {
+  border-left: 0.1rem solid #e5e5e5;
+  border-right: 0.1rem solid #e5e5e5; }
+body .module-1 {
+  width: 100%;
+  padding: 0rem 0.8rem;
+  border-top: 0.8rem solid #e5e5e5; }
+body .module-2 {
+  width: 100%;
+  padding: 0rem 0.8rem;
+  border-top: 0.8rem solid #e5e5e5; }
+body section {
+  width: 100%;
+  border-top: 0.8rem solid #e5e5e5; }
+body section article {
+  width: 100%;
+  padding: 0.5rem;
+  border-bottom: 0.1rem solid #e5e5e5;
+  position: relative;
+  overflow: hidden; }
+body section .bear-article {
+  width: 30%;
+  float: left;
+  margin-right: 0.8rem; }
+body section .bear-article img {
+  width: 100%;
+  vertical-align: bottom; }
+body section h2 {
+  font-size: 1rem; }
+body section .time {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 32%; }
+body section .bottom-image {
+  display: flex;
+  justify-content: space-between; }
+body section .bottom-image div {
+  width: 33%;
+  margin: 0.5rem  0rem; }
+body section .bottom-image img {
+  width: 100%;
+  vertical-align: bottom; }
+body section .last {
+  font-size: 0.8rem;
+  opacity: 0.5; }
+
+/*# sourceMappingURL=task_1_11_1.css.map */
