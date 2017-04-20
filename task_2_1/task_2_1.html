@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task_2_1</title>
+  </head>
+  <body>
+    <label>请输入北京今天空气质量:<input  id="aqi"  type="text"/></label>
+	<button>确认填写</button>
+	<div>您输入的值是：<span  id="aqi-display">尚无录入</span></div>
+	<script  type="text/javascript">
+	function changeText(){
+	  var num=document.getElementById("aqi").value;
+	  var number=parseInt(num);//得到整数
+	  if((!isNaN(number))&&(number>=0)&&(number<=100)){
+	  document.getElementById("aqi-display").innerHTML=number;
+	  }else{
+	  alert("请输入0-100的数字");
+	  }
+	  }
+	  //如果输入的是数字且大于等于0小于等于100，则将  尙无录入  替换为数字，否则弹出提示框
+	  var  button=document.getElementsByTagName("button");
+	  button[0].onclick=function(){
+	  changeText();
+	  }//button被鼠标按下时触发函数
+	  document.onkeydown = function(e){
+      if (e.keyCode == 13){
+         changeText();// 回车触发函数
+      }
+      }
+	</script>
+  </body>
+</html>
