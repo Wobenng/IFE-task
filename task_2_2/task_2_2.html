@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task_2_2</title>
+	<style>
+	  table,th,td{
+	  border:solid  1px  black;
+	  margin:auto;
+	  text-align:center;
+	  border-collapse:collapse;
+	  }
+	  th{
+	  background-color:gray;
+	  }
+	  td{
+	  width:100px;
+	  }
+	  h3{
+	  text-align:center;
+	  } 
+	</style>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <table id="aqi-list">
+  <tr>
+    <th>排名</th>
+	<th>城市</th>
+	<th>得分</th>
+  </tr>
+  </table>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["深圳", 10],
+  ["广州", 50],
+  ["厦门", 90],
+  ["杭州", 100],
+  ["南京",70],
+  ["重庆",80],
+  ["大连",90]
+];
+
+var  filterResult=aqiData.filter(function(item){
+return item[1]>60;
+});
+
+filterResult.sort(function(item1,item2){
+return  item1[1]-item2[1];
+});
+
+var  number=0;
+for(var  i=0;i<filterResult.length+1;i++){
+var  table=document.getElementById("aqi-list");
+var  tr=document.createElement("tr");
+table.appendChild(tr);
+if( i>=1 && filterResult[i-1][1]===filterResult[i][1]){
+number=num;
+}else{
+number=number+1;
+}
+tr.innerHTML="<td>"+number+"</td>"+
+             "<td>"+filterResult[i][0]+"</td>"+
+			 "<td>"+filterResult[i][1]+"</td>";
+num=number;
+}
+
+
+</script>
+</body>
+</html>
