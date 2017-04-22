@@ -1,0 +1,63 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <ul id="source">
+    <li>北京空气质量：<b>90</b></li>
+    <li>上海空气质量：<b>70</b></li>
+    <li>天津空气质量：<b>80</b></li>
+    <li>广州空气质量：<b>50</b></li>
+    <li>深圳空气质量：<b>40</b></li>
+    <li>福州空气质量：<b>32</b></li>
+    <li>成都空气质量：<b>90</b></li>
+  </ul>
+
+  <ul id="resort">
+  </ul>
+
+  <button id="sort-btn">排序</button>
+
+<script type="text/javascript">
+function  render(){
+var  uls=document.getElementById("source");
+var  aqi=uls.getElementsByTagName("li");
+var  data=new Array(); //新建空数组，用来存放从列表中获得的数据
+for(var  i=0;i<aqi.length;i++){
+var  firsttext=aqi[i].firstChild.textContent;
+var  lasttext=aqi[i].lastChild.textContent;  //获得列表中的文字和数字
+data[i]=[];                             
+data[i].push(firsttext,lasttext);//将每一次循环获得的文字和数字放在data[i]中，再将data[i]放在data中
+}
+data.sort(function(item1,item2){
+return  item1[1]-item2[1];
+});//将获得的data数组进行排序
+
+
+var  num1=-1;//初始设置让num1在循环中先等于1，以此来获得chineseNumber[0]
+var  chineseNumber=["一","二","三","四","五","六","七"];
+for(var  j=0;j<data.length;j++){
+var  newuls=document.getElementById("resort");
+var  li=document.createElement("li");
+if( j>0 &&data[j][1]===data[j-1][1]){
+num1=num2;  //用来在分数相等的情况下调用num2，赋值给num1
+}else{
+num1=num1+1;//分数不相等则继续用上一循环得到的num1加1，获得新的num1
+}
+li.innerHTML="第"+chineseNumber[num1]+"名:"+data[j][0]+"<b>"+data[j][1]+"</b>";
+newuls.appendChild(li);
+num2=num1;//将每一次循环得到的num1另存放在num2
+}
+}
+
+var  button=document.getElementById("sort-btn");
+button.onclick=function(){
+render();
+}
+
+</script>
+</body>
+</html>
