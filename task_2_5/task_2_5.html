@@ -1,0 +1,112 @@
+<!doctype  html>
+<html>
+  <head>
+    <meta  charset="utf-8"/>
+	<title>task_2_4</title>
+	<style>
+	li{
+	display:inline-block;
+	background-color:black;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	padding:5px;
+	margin:5px;
+	cursor:pointer;
+	}
+	button{
+	border-radius:2px;
+	border:1px  solid  gray;
+	cursor:pointer;
+	background-color:white;
+	}
+	</style>
+  </head>
+  <body>
+    <input  type="text"  name="number"  id="inputnumber"/>
+    <button  id="leftin">左侧入</button>
+    <button  id="rightin">右侧入</button>
+    <button  id="leftout">左侧出</button>
+    <button  id="rightout">右侧出</button>
+    <ul  id="numberlist">
+    </ul>
+  <script>
+  
+    var  inputnumber=document.getElementById("inputnumber");
+	var  numberlist=document.getElementById("numberlist");
+	var  leftin=document.getElementById("leftin");
+	var  rightin=document.getElementById("rightin");
+	var  leftout=document.getElementById("leftout");
+	var  rightout=document.getElementById("rightout");
+
+
+	
+	
+//左侧入  按钮点击触发的函数
+function  leftInClick(){
+    if(inputnumber.value==""){
+    alert("请输入一个数字");//输入框为空，按钮点击时，跳出提示框
+	}else if(!isNaN(inputnumber.value)){
+	var  li=document.createElement("li");
+	li.innerHTML=inputnumber.value;
+	numberlist.insertBefore(li,numberlist.firstChild);//将生成的li元素从前方放入
+	}else{
+	alert("请输入数字");//输入非数字，按钮点击，跳出提示框
+	}
+	}
+	//右侧入  按钮点击触发的函数
+function  rightInClick(){
+	if(inputnumber.value==""){
+    alert("请输入一个数字");
+	}else if(!isNaN(inputnumber.value)){
+	var  li=document.createElement("li");
+	li.innerHTML=inputnumber.value;
+	numberlist.appendChild(li);
+	}else{
+	alert("请输入数字");
+	}
+	}
+function  leftOutClick(){
+numberlist.removeChild(numberlist.firstChild);//左侧出  按钮点击时，删除numberlist中的第一个元素，即从左往右输入
+}
+function  rightOutClick(){
+numberlist.removeChild(numberlist.lastChild);//右侧出  按钮点击时，删除numberlist中的第一个元素，即从右往左输入
+}
+
+
+numberlist.addEventListener("click",function(){
+if(event.target.nodeName.toLowerCase()=="li"){
+numberlist.removeChild(event.target);
+}
+});
+//为numberlist添加点击事件，如果是元素名为li的元素触发了该函数，那么删除n该子元素，即li.
+leftin.onclick=function(){
+leftInClick();
+}
+rightin.onclick=function(){
+rightInClick();
+}
+leftout.onclick=function(){
+var  liList=numberlist.getElementsByTagName("li");  
+if(liList.length>0){//这是为了，防止没有添加的li元素时，点击删除按钮而跳出显示空值的提示框
+var  firstnum=liList[0].innerHTML;
+confirm("确定删除"+firstnum+"?")
+leftOutClick();
+}else{
+alert("请输入数字");//没有li与元素或者，跳出alert框，而不是显示空值的confirm框
+}
+}
+rightout.onclick=function(){
+var  liList=numberlist.getElementsByTagName("li"); 
+if(liList.length>0){
+var  lastnum=liList[liList.length-1].innerHTML;//数组中的下标号和项数相差一位，所以减1，从而获得最后一项
+confirm("确定删除"+lastnum+"?")
+rightOutClick();
+}else{
+alert("请输入数字");
+}
+}
+
+  </script>
+  </body>
+</html>
