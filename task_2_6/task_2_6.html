@@ -1,0 +1,159 @@
+<!doctype  html>
+<html>
+  <head>
+    <meta  charset="utf-8"/>
+	<title>task_2_4</title>
+	<style>
+	body{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	}
+	div,textarea{
+	width:50%;
+	}
+	div{
+	text-align:center;
+	}
+	div  button{
+	width:22%;
+	background-color:gray;
+	color:white;
+	font-size:16px;
+	margin:5px;
+	}
+	li{
+	display:inline-block;
+	background-color:black;
+	color:white;
+	font-size:20px;
+	text-align:center;
+	padding:5px;
+	margin:5px;
+	cursor:pointer;
+	}
+	button{
+	border-radius:2px;
+	border:1px  solid  gray;
+	cursor:pointer;
+	background-color:white;
+	}
+	#searchInput{
+	width:300px;
+	margin:20px;
+	}
+	</style>
+  </head>
+  <body>
+    <div  id="searchBox">
+	  <input  type="text"  name="searchInformmation"  id="searchInput"/>
+	  <button  id="search">搜索</button>
+	</div>
+    <textarea  rows="5"  cols="80"  id="inputnumber"></textarea>
+	<div>
+    <button  id="leftin">左侧入</button>
+    <button  id="rightin">右侧入</button>
+    <button  id="leftout">左侧出</button>
+    <button  id="rightout">右侧出</button>
+	</div>
+    <ul  id="numberlist">
+    </ul>
+  <script>
+  
+    var  inputnumber=document.getElementById("inputnumber");
+	var  numberlist=document.getElementById("numberlist");
+	var  leftin=document.getElementById("leftin");
+	var  rightin=document.getElementById("rightin");
+	var  leftout=document.getElementById("leftout");
+	var  rightout=document.getElementById("rightout");
+	var  searchbutton=document.getElementById("search");
+
+
+function  seaarchButtonClick(){
+var text = document.getElementById("searchInput").value;
+var  liList=numberlist.getElementsByTagName("li");
+console.log(liList);
+for (let i = 0; i < liList.length; i++) {
+       var  li=liList[i];
+      	if(liList[i].innerHTML.indexOf(text) >= 0){
+      		li.style.backgroundColor = "green";
+      	}
+      	else{
+      		li.style.backgroundColor = "black";
+      	}
+
+}
+}
+
+searchbutton.onclick = function(){
+seaarchButtonClick();
+}
+//左侧入  按钮点击触发的函数
+function  leftInClick(){
+    var inputContent=inputnumber.value.split(/[\n\r\t\s,，、;；]+/g);
+	console.log(inputContent);
+	for(var  m=0;m<inputContent.length;m++){
+	if(inputContent[m] === "") continue;
+	var  li=document.createElement("li");
+	li.innerHTML=inputContent[m];
+	numberlist.insertBefore(li,numberlist.firstChild);//将生成的li元素从前方放入
+	}
+	}
+	//右侧入  按钮点击触发的函数
+function  rightInClick(){
+    var inputContent=inputnumber.value.split(/[\n\r\s,，、;；]+/g);
+	console.log(inputContent);
+	for(var  m=0;m<inputContent.length;m++){
+	if(inputContent[m] === "") continue;
+	var  li=document.createElement("li");
+	li.innerHTML=inputContent[m];
+	numberlist.appendChild(li);;//将生成的li元素从后方放入
+}
+}
+
+function  leftOutClick(){
+numberlist.removeChild(numberlist.firstChild);//左侧出  按钮点击时，删除numberlist中的第一个元素，即从左往右输入
+}
+function  rightOutClick(){
+numberlist.removeChild(numberlist.lastChild);//右侧出  按钮点击时，删除numberlist中的第一个元素，即从右往左输入
+}
+
+
+numberlist.addEventListener("click",function(){
+if(event.target.nodeName.toLowerCase()=="li"){
+numberlist.removeChild(event.target);
+}
+});
+//为numberlist添加点击事件，如果是元素名为li的元素触发了该函数，那么删除n该子元素，即li.
+leftin.onclick=function(){
+leftInClick();
+}
+rightin.onclick=function(){
+rightInClick();
+}
+leftout.onclick=function(){
+var  liList=numberlist.getElementsByTagName("li");  
+if(liList.length>0){//这是为了，防止没有添加的li元素时，点击删除按钮而跳出显示空值的提示框
+var  firstnum=liList[0].innerHTML;
+confirm("确定删除"+firstnum+"?")
+leftOutClick();
+}else{
+alert("请输入数字");//没有li与元素或者，跳出alert框，而不是显示空值的confirm框
+}
+}
+rightout.onclick=function(){
+var  liList=numberlist.getElementsByTagName("li"); 
+if(liList.length>0){
+var  lastnum=liList[liList.length-1].innerHTML;//数组中的下标号和项数相差一位，所以减1，从而获得最后一项
+confirm("确定删除"+lastnum+"?")
+rightOutClick();
+}else{
+alert("请输入数字");
+}
+}
+
+
+
+  </script>
+  </body>
+</html>
