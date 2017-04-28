@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 07</title>
+    <style>
+        .box{
+            display: flex;
+            align-items: center;
+			justify-content:space-around;
+            border: 1px solid #000;
+			box-sizing:border-box;
+			padding:10px;
+			margin:0px  10px;
+            width: 50%;
+            height: 80%;
+			background-color:white;
+        }
+        #box-1{
+            margin: 20px auto;
+            width: 50%;
+            height: 200px;
+        }
+        .btn-wap{
+            display: flex;
+            margin:0  auto;
+            width: 50%;
+        }
+		.btn-primary{
+		width:28%;
+		height:50px;
+		margin:4%;
+		background-color:#456799;
+		color:white;
+		border:solid  1px  gray;
+		border-radius:5px;
+		font-size:16px;
+		}
+    </style>
+</head>
+<body>
+<div class="box" id="box-1">
+    <div class="box-2 box">
+        <div class="box-4 box">
+            <div class="box-8 box"></div>
+            <div class="box-9 box"></div>
+        </div>
+        <div class="box-5 box">
+            <div class="box-10 box"></div>
+            <div class="box-11 box"></div>
+        </div>
+    </div>
+    <div class="box-3 box">
+        <div class="box-6 box">
+            <div class="box-12 box"></div>
+            <div class="box-13 box"></div>
+        </div>
+        <div class="box-7 box">
+            <div class="box-14 box"></div>
+            <div class="box-15 box"></div>
+        </div>
+    </div>
+</div>
+
+<div class="btn-wap">
+    <button class="btn btn-primary "id="btnPerOrder" >前序</button>
+    <button class="btn btn-primary "id="btnInOrder" >中序</button>
+    <button class="btn btn-primary "id="btnPostOrder">后序</button>
+</div>
+<script>
+var  flag=false;
+var  preListRec=[];
+var  preOrderRec=function(node){
+if(node){
+preListRec.push(node);
+preOrderRec(node.firstElementChild);
+preOrderRec(node.lastElementChild);
+}
+}
+var inListRec=[];
+var  inOrderRec=function(node){
+if(node){
+inOrderRec(node.firstElementChild);
+inListRec.push(node);
+inOrderRec(node.lastElementChild);
+}
+}
+var postListRec=[];
+var  postOrderRec=function(node){
+if(node){
+postOrderRec(node.firstElementChild);
+postOrderRec(node.lastElementChild);
+postListRec.push(node);
+}
+}
+function show(arr) {
+for(var i = 0; i < arr.length; i++) {
+(function(i){
+setTimeout(function(){
+if(i-1>=0){
+arr[i-1].style.backgroundColor="white";
+}
+arr[i].style.backgroundColor="gray";
+},i*1000)
+})(i);
+}
+}
+function   clearColor(arr){
+setTimeout(
+function  clear(){
+var  div=document.getElementsByTagName("div");
+for(var  j=0;j<div.length;j++){
+div[j].style.backgroundColor="white";
+}
+},(arr.length)*1000)
+}
+
+
+
+
+
+var  btnPerOrder=document.getElementById("btnPerOrder");
+var  btnInOrder=document.getElementById("btnInOrder");
+var  btnPostOrder=document.getElementById("btnPostOrder");
+var  root=document.getElementById("box-1");
+btnPerOrder.onclick=function(){
+preListRec=[];
+preOrderRec(root);
+show(preListRec);
+clearColor(preListRec);
+console.log(preListRec);
+}
+btnInOrder.onclick=function(){
+inListRec=[];
+inOrderRec(root);
+show(inListRec);
+clearColor(inListRec);
+console.log(inListRec);
+}
+btnPostOrder.onclick=function(){
+postListRec=[];
+postOrderRec(root);
+show(postListRec);
+clearColor(postListRec);
+console.log(postListRec);
+}
+</script>
+
+</body>
+</html>
