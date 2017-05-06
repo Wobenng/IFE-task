@@ -1,0 +1,167 @@
+<!doctype  html>
+<html>
+<head>
+<meta  charset="utf-8"/>
+<title>task_3_3</title>
+<style>
+table td{
+position:relative;
+}
+td  label{
+font-weight:bolder;
+position:relative;
+}
+td:nth-child(1){
+width:80px;
+text-align:right;
+}
+td:nth-child(2),td:nth-child(3){
+text-align:center;
+}
+input[type="text"]{
+width:500px;
+height:30px;
+font-size:16px;
+padding:0px;
+border:1px  solid  gray;
+border-radius:5px;
+outline:none;
+}
+option{
+padding:0px;
+}
+select{
+width:200px;
+height:30px;
+font-size:16px;
+text-align:center;
+border:1px  solid  gray;
+border-radius:5px;
+outline:none;
+}
+td:nth-child(3)  select{
+width:300px;
+}
+.hidden{
+display:none;
+}
+input[type="radio"]{
+margin:0px  10px;
+dislay:none;
+}
+i{
+width:16px;
+height:16px;
+border-radius:50%;
+background-color:white;
+border:solid  1px  gray;
+position:absolute;
+top:2px;
+left:5px;
+}
+i span{
+width:6px;
+height:6px;
+border-radius:50%;
+background-color:white;
+border:solid  1px  white;
+position:absolute;
+top:25%;
+left:25%;
+}
+</style>
+</head>
+<body>
+    <form  id="myform">
+	  <table>
+        <tr  id="one">
+		  <td></td>
+		  <td><label><input  type="radio"  id="students"  name="person"  checked />在校生<i><span></span></i></label></td>
+		  <td><label><input  type="radio"  id="nonstudents"  name="person"/>非在校生<i><span></span></i></label></td>
+		</tr>
+		<tr  id="two">
+		<td>学校</td>
+		<td>
+		    <select  id="city">
+			    <option>北京</option>
+			    <option>上海</option>
+			    <option>广东</option>
+			    <option>湖北</option>
+			    <option>江苏</option>
+			</select>
+		</td>
+		<td id="school">
+		    <select    class="">
+			    <option>北京大学</option>
+			    <option>清华大学</option>
+			</select>
+			<select   class="hidden">
+			    <option>上海交通大学</option>
+			    <option>复旦大学</option>
+			</select>
+			<select    class="hidden">
+			    <option>中山大学</option>
+			    <option>华南理工大学</option>
+			</select>
+			<select    class="hidden">
+			    <option>华中科技大学</option>
+			    <option>武汉大学</option>
+			</select>
+			<select    class="hidden">
+			    <option>南京大学</option>
+			    <option>东南大学</option>
+			</select>
+		</td>
+		</tr>
+		<tr  id="three">
+		    <td>就业单位</td>
+			<td  colspan="2"><input  type="text"  id="workunits"/></td>
+		</tr>
+	  <table>
+    </form>
+	<script>
+	    var  studentsItem=document.getElementById("students");
+	    var  nonstudentsItem=document.getElementById("nonstudents");
+	    var  rowTwo=document.getElementById("two");
+	    var  rowThree=document.getElementById("three");
+	    var  city=document.getElementById("city");
+		var  school=document.getElementById("school");
+		var  schoolSelect=school.getElementsByTagName("select");
+		var  studentsRadio=document.getElementsByTagName("i");
+
+		window.onload=checkFunction;
+		
+		
+		function  checkFunction(){
+		if(studentsItem.checked){
+		studentsRadio[0].style.backgroundColor="#38f";
+		studentsRadio[1].style.backgroundColor="white";
+		rowThree.style.display="none";
+		rowTwo.style.display="table-row";
+		}
+		studentsItem.onclick=function(){
+		studentsRadio[0].style.backgroundColor="#38f";
+		studentsRadio[1].style.backgroundColor="white";
+		rowThree.style.display="none";
+		rowTwo.style.display="table-row";
+		}
+		nonstudentsItem.onclick=function(){
+		studentsRadio[1].style.backgroundColor="#38f";
+		studentsRadio[0].style.backgroundColor="white";
+		rowTwo.style.display="none";
+		rowThree.style.display="table-row";
+		}
+		}
+
+        city.onchange=function(){
+        for(var  i=0;i<schoolSelect.length;i++){
+		var x=city.selectedIndex;
+		schoolSelect[i].setAttribute("class","hidden");
+		schoolSelect[x].setAttribute("class","");
+		console.log(city.selectedIndex);
+		console.log(schoolSelect);
+		}
+		}
+	</script>
+</body>
+</html>
