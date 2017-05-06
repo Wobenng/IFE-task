@@ -1,0 +1,265 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+<meta charset="utf-8"></meta>  
+<style>
+#myform{
+width:450px;
+margin:auto;
+}
+input{
+border:solid  1px  gray;
+border-radius:5px;
+width:300px;
+height:40px;
+font-size:20px;
+margin:10px  10px  5px  10px;
+}
+#btn{
+background-color:#897654;
+color:white;
+height:40px;
+width:70px;
+border-radius:3px;
+border:none;
+}
+td:first-child{
+text-align:right;
+}
+td:last-child{
+text-align:left;
+}
+tfoot  td:last-child{
+text-align:right;
+}
+#usernameTip,#passwordTip,#passwordconfirmTip,#emailTip,#phonenumberTip{
+padding-left:10px;
+font-size:14px;
+opacity:0.5;
+}
+</style>
+</head>
+<body>
+  <form id="myform"    method="post">
+    <table>
+    <tr>
+      <td>用户名:</td>
+	  <td>
+	  <input type="text" name="userName"  id="userName" >
+	  </td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td id="usernameTip"></td>
+	</tr>
+	<tr>
+	  <td>密码:</td> 
+	  <td><input  type="password"  id="password" style="ime-mode:disabled"/></td>
+    </tr>
+	<tr>
+	  <td></td>
+	  <td id="passwordTip"></td>
+	</tr>
+	<tr>
+	  <td>密码确认:</td> 
+	  <td><input  type="password"  id="passwordconfirm"  style="ime-mode:disabled"/></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td id="passwordconfirmTip"></td>
+	</tr>
+    <tr>
+	  <td>邮箱:</td> 
+	  <td><input type="text" name="email"  id="email" ></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td id="emailTip"></td>
+	</tr>
+    <tr>
+	  <td>手机:</td> 
+	  <td><input type="text" name="telephone"  id="phonenumber" ></td>
+    </tr>
+	<tr>
+	  <td></td>
+	  <td id="phonenumberTip"></td>
+	</tr>
+	<tfoot>
+	  <td></td>
+	  <td><input type="submit" value="验证"  id="btn"></td>
+	</tfoot>
+	</table>
+  </form>
+      <script>
+	  var  myForm=document.getElementById("myform");
+	  var  submitBtn=document.getElementById("btn"); 
+	  var  userName=document.getElementById("userName"); 
+	  var  password=document.getElementById("password"); 
+	  var  passwordconfirm=document.getElementById("passwordconfirm"); 
+	  var  email=document.getElementById("email"); 
+	  var  phonenumber=document.getElementById("phonenumber"); 
+	  var  usernameTip=document.getElementById("usernameTip"); 
+	  var  passwordTip=document.getElementById("passwordTip"); 
+	  var  passwordconfirmTip=document.getElementById("passwordconfirmTip"); 
+	  var  emailTip=document.getElementById("emailTip"); 
+	  var  phonenumberTip=document.getElementById("phonenumberTip"); 
+	  
+	  
+	  userName.onfocus=function(){
+	  usernameTip.innerHTML="必填，长度为4~16个字符";
+	  usernameTip.style.color="black";
+	  }
+	  userName.onblur=checkUserNameBlur;
+	  function checkUserNameBlur(){
+	  var  inputText=userName.value;
+      var  re=/[^A-z0-9\u4E00-\u9FA5]/g;
+	  var  str=inputText.replace(/[^x00-xff]/g,'AB');
+	  if(inputText==""){
+	  usernameTip.innerHTML="用户名不能为空";
+	  usernameTip.style.color="red";
+	  userName.style.borderColor="red";
+	  }else  if(re.test(inputText)){
+	   usernameTip.innerText = "不能含空格等特殊字符";
+       usernameTip.style.color = "red";
+       userName.style.borderColor = "red";
+	  }else  if(str.length<=16 && str.length>=4){
+	  usernameTip.innerText = "用户名格式正确";
+      usernameTip.style.color = "green";
+      userName.style.borderColor = "green";
+	  return  true;
+	  }else{
+	  usernameTip.innerText="长度必须为4~16个字符";
+      usernameTip.style.color="red";
+      userName.style.borderColor="red";
+	  }
+	  }
+	  
+	  var  passwordValue=null;
+	  password.onfocus=function(){
+	  passwordTip.innerHTML="必填，6~16个字符，区分大小写";
+	  passwordTip.style.color="black";
+	  }
+	  password.onblur=checkPasswordBlur;
+	  function checkPasswordBlur(){
+	  var  inputText=password.value;
+	  var  len=inputText.length;
+	  passwordValue=inputText;
+      var  re=/\s/g;
+	  var  patt1=/^(\d+)$/g;
+	  var  patt2=/^([a-zA-Z]+)$/g;
+	  if(inputText==""){
+	  passwordTip.innerHTML="密码不能为空";
+	  passwordTip.style.color="red";
+	  password.style.borderColor="red";
+	  }else  if(re.test(inputText)){
+	   passwordTip.innerText = "不能含空格";
+       passwordTip.style.color = "red";
+       password.style.borderColor = "red";
+	  }else  if(6>inputText.length||inputText.length>16){
+	  passwordTip.innerHTML="长度必须为6~16个字符";
+      passwordTip.style.color="red";
+      password.style.borderColor="red";
+	  }else if(patt1.test(inputText)||patt2.test(inputText)){
+	  passwordTip.innerHTML = "密码过于简单，建议数字和英文结合";
+       passwordTip.style.color = "red";
+       password.style.borderColor = "red";
+	  }else{
+	  passwordTip.innerHTML = "密码格式正确";
+       passwordTip.style.color = "green";
+       password.style.borderColor = "green";
+	   return  true;
+	  }
+	  }
+	  
+	  
+	  passwordconfirm.onfocus=function(){
+	  passwordconfirmTip.innerHTML="请再次输入密码";
+	  passwordconfirmTip.style.color="black";
+	  }
+      passwordconfirm.onblur=checkPasswordconfirmBlur;
+	  function checkPasswordconfirmBlur(){
+	  var  inputText=passwordconfirm.value;
+	  if(inputText==""){
+	  passwordconfirmTip.innerHTML="请再次输入密码";
+	  passwordconfirmTip.style.color = "red";
+      passwordconfirm.style.borderColor = "red";
+	  }else if(passwordValue===inputText){
+	  passwordconfirmTip.innerHTML="密码验证正确";
+	  passwordconfirmTip.style.color = "green";
+       passwordconfirm.style.borderColor = "green";
+	   return  true;
+	  }
+	  else{
+	  passwordconfirmTip.innerHTML="两次填写的密码不一致";
+	  passwordconfirmTip.style.color = "red";
+       passwordconfirm.style.borderColor = "red";
+	  }
+	  }
+	  
+	  
+	  email.onfocus=function(){
+	  emailTip.innerHTML="6~18个字符,可使用字母、数字、下划线，需以字母开头";
+	  emailTip.style.color="black";
+	  }
+	  email.onblur=checkEmailBlur;
+	  function checkEmailBlur(){
+	  var  inputText=email.value;
+	  var  patt=/^[A-z0-9_]+@[A-z0-9_]+(\.[A-z0-9_]+)+$/g
+	  if(inputText==""){
+	  emailTip.innerHTML="邮箱不能为空";
+	  emailTip.style.color = "red";
+      email.style.borderColor = "red";
+	  }else if(patt.test(inputText) &&  18>=inputText.length && inputText.length>=6 ){
+	  emailTip.innerHTML="邮箱格式正确";
+	  emailTip.style.color = "green";
+      email.style.borderColor = "green";
+	  return  true;
+	  }else{
+	  emailTip.innerHTML="邮箱格式错误";
+	  emailTip.style.color = "red";
+      email.style.borderColor = "red";
+	  }
+	  }
+	  
+	  
+	  phonenumber.onfocus=function(){
+	  phonenumberTip.innerHTML="可通过手机号码快速找回密码";
+	  phonenumberTip.style.color="black";
+	  }
+	  phonenumber.onblur=checkPhoneBlur;
+	  function  checkPhoneBlur(){
+	  var  inputText=phonenumber.value;
+	  var  re=/^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$/g;
+	  if(inputText==""){
+	  phonenumberTip.innerHTML="手机号码不能为空";
+	  phonenumberTip.style.color = "red";
+      phonenumber.style.borderColor = "red";
+	  }else if(re.test(inputText)){
+	  phonenumberTip.innerHTML="格式正确";
+	  phonenumberTip.style.color = "green";
+      phonenumber.style.borderColor = "green";
+	  return  true;
+	  }else{
+	  phonenumberTip.innerHTML="手机格式错误";
+	  phonenumberTip.style.color = "red";
+      phonenumber.style.borderColor = "red";
+	  }	  
+	  }
+	  
+	  myForm.onsubmit=function(){
+	  checkUserNameBlur();
+	  checkEmailBlur();
+	  checkPasswordBlur();
+	  checkPasswordconfirmBlur();
+	  checkPhoneBlur();
+	  if(checkUserNameBlur()===true && checkEmailBlur()===true && checkPasswordBlur()===true &&  checkPasswordconfirmBlur()===true && checkPhoneBlur()===true){
+	  alert("提交成功");
+	  }else{
+	  alert("输入有误");
+	  return false;
+	  }
+	  }
+	  
+	  </script>
+</body>
+</html>
