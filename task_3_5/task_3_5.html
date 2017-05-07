@@ -224,7 +224,7 @@ transition: all 0.5s linear;
          goTop();
 		 deg=-90;
 		 moveBlock.style.transform="rotate("+deg+"deg)";
-		 di=0;
+		 di=1;
 		 }else{
 		 alert("出界");
 		 }
@@ -232,14 +232,14 @@ transition: all 0.5s linear;
 		 }
 		 
 		 if(inputText==="MOV RIG"){
-		 if(di==1){
+		 if(di==2){
 		 goRight();
 		 }else{
 		 if(moveBlock.style.left !=="491px"){
          goRight();
 		 deg=0;
 		 moveBlock.style.transform="rotate("+deg+"deg)";
-		 di=0;
+		 di=2;
 		 }else{
 		 alert("出界");
 		 }
@@ -247,14 +247,14 @@ transition: all 0.5s linear;
 		 }
 		 
 		 if(inputText==="MOV BOT"){
-		 if(di==1){
+		 if(di==3){
 		 goBottom();
 		 }else{
 		 if(moveBlock.style.top !=="491px"){
          goBottom();
 		 deg=90;
 		 moveBlock.style.transform="rotate("+deg+"deg)";
-		 di=0;
+		 di=3;
 		 }else{
 		 alert("出界");
 		 }
