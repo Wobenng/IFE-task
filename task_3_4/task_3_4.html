@@ -1,0 +1,196 @@
+<!doctype  html>
+<html>
+<head>
+<meta  charset="utf-8"/>
+<title>task_3_4</title>
+<style>
+*{
+box-sizing:border-box;
+margin:0px;
+padding:0px;
+}
+body{
+width:100%;
+display:flex;
+margin:0px;
+}
+#main{
+width:70%;
+height:660px;
+background-color:black;
+position:relative;
+}
+#side{
+width:30%;
+padding:200px 60px;
+}
+table{
+width:560px;
+height:560px;
+margin:80px 190px;
+border-collapse:collapse;
+position:relative;
+}
+td{
+border:solid  1px  #7ca5b0;
+width:70px;
+height:70px;
+box-sizing:border-box;
+}
+#top{
+position:absolute;
+top:40px;
+left:190px;
+width:560px;
+}
+#top li{
+display:inline-block;
+color:white;
+width:70px;
+text-align:center;
+font-size:20px;
+}
+#left{
+position:absolute;
+top:100px;
+left:150px;
+height:560px;
+list-style:none;
+}
+#left li{
+color:white;
+height:70px;
+font-size:20px;
+}
+p{
+line-height:30px;
+}
+input{
+margin-top:30px;
+outline:none;
+height:30px;
+border-radius:5px;
+border:solid  1px  gray;
+}
+button{
+height:30px;
+width:80px;
+background-color:#38f;
+border:solid  1px  #38f;
+border-radius:5px;
+cursor:pointer;
+color:white;
+}
+#moveblock{
+width:69px;
+height:69px;
+background-color:white;
+border-right:8px  solid  #38f;
+position:absolute;
+transition: all 0.5s linear;
+}
+</style>
+</head>
+<body>
+     <div  id="main">
+         <table>
+		     <td  id="moveblock" style="position:absolute;  top:1px; left:1px;"></td>
+		     <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+			 <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+			 <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+			 <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+			 <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+			 <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+			 <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+			 <tr>
+			     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			 </tr>
+		 </table>
+		 <ul  id="top">
+		     <li>1</li
+			 ><li>2</li
+			 ><li>3</li
+			 ><li>4</li
+			 ><li>5</li
+			 ><li>6</li
+			 ><li>7</li
+			 ><li>8</li>
+		 </ul>
+		 <ul  id="left">
+		     <li>1</li>
+		     <li>2</li>
+		     <li>3</li>
+		     <li>4</li>
+		     <li>5</li>
+		     <li>6</li>
+		     <li>7</li>
+		     <li>8</li>
+		 </ul>
+     </div>
+     <div id="side">
+	     <p>
+		     GO：向蓝色边所面向的方向前进一格</br>
+             TUN LEF：向左转（逆时针旋转90度）</br>
+             TUN RIG：向右转（顺时针旋转90度）</br>
+             TUN BAC：向右转（旋转180度）
+		 </p>
+		 <input  type="text"  id="instruction"/>
+		 <button id="button">执行</button>
+     </div>
+	 <script>
+	     var  moveBlock=document.getElementById("moveblock");
+	     var  Button=document.getElementById("button");
+	     var  Instruction=document.getElementById("instruction");
+		 var  deg=0;
+		 var  di=2;
+		 
+		 
+		 Button.onclick=function(){
+		 var  inputText=Instruction.value;
+		 if(inputText==="TUN LEF"){
+		 deg=deg-90;
+		 moveBlock.style.transform="rotate("+deg+"deg)";
+		 deg=deg;
+		 if(di==0){
+		 di=3;
+		 }else{
+		 di=(di-1)%4;
+		 }
+		 }
+		 if(inputText==="TUN RIG"){
+		 deg=deg+90;
+		 moveBlock.style.transform="rotate("+deg+"deg)";
+		 deg=deg;
+		 di=(di+1)%4;
+		 }
+		 if(inputText==="TUN BAC"){
+		 deg=deg+180;
+		 moveBlock.style.transform="rotate("+deg+"deg)";
+		 deg=deg;
+		 di=(di+2)%4;
+		 }
+		 if(inputText==="GO"){
+		 if(di==0){moveBlock.style.left=="1px"?alert("出界"):moveBlock.style.left=(parseInt(moveBlock.style.left)-70)+"px"};
+		 if(di==1){moveBlock.style.top=="1px"?alert("出界"):moveBlock.style.top=(parseInt(moveBlock.style.top)-70)+"px"};
+		 if(di==2){moveBlock.style.left=="491px"?alert("出界"):moveBlock.style.left=(parseInt(moveBlock.style.left)+70)+"px"};
+		 if(di==3){moveBlock.style.top=="491px"?alert("出界"):moveBlock.style.top=(parseInt(moveBlock.style.top)+70)+"px"};
+		 }
+		 }
+		 
+	 </script>
+</body>
+</html>
