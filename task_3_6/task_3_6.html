@@ -1,0 +1,353 @@
+<!doctype  html>
+<html>
+<head>
+    <meta  charset="utf-8"/>
+	<title>task_3_6</title>
+	<style>
+	*{
+	margin:0px;
+	box-sizing:border-box;
+	}
+	#maincontainer{
+	background-color:#38f;
+	height:800px;
+	}
+	body{
+	user-select: none;
+	}
+	#mask{
+	width:100%;
+	height:800px;
+	position:absolute;
+	top:0px;
+	background-color:rgba(255,255,255,.5);
+	transition:opacity   1s  ease-in-out;
+	}
+	#outer{
+	border:solid  1px  white;
+	background-color:white;
+	position:fixed;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+	user-select: none;
+	}
+	header{
+	height:40px;
+	width:100%;
+	background-color:#78e;
+	cursor:move;
+	}
+	article{
+	height:120px;
+    flex:1;
+	}
+	footer{
+	text-align:right;
+	padding:10px;
+	}
+	button{
+	background-color:#78e;
+	width:50px; 
+	height:20px;
+	border:none;
+	color:white;
+	cursor:pointer;
+	}
+	#clickBtn{
+	position:fixed;
+	top:80%;
+	left:46%;
+	width:100px;
+	height:30px;
+	background-color:white;
+	color:#78e;
+	}
+	#pop_t{
+	display:block;
+	position:absolute;
+	height:10px;
+	width:100%;
+	top:0;
+	cursor:n-resize;
+	}
+	#pop_b{
+	display:block;
+	position:absolute;
+	height:10px;
+	width:100%;
+	bottom:0;
+	cursor:s-resize;
+	}
+	#pop_l{
+	display:block;
+	position:absolute;
+	height:100%;
+	width:10px;
+	top:0;
+	cursor:w-resize;
+	}
+	#pop_r{
+	display:block;
+	position:absolute;
+	height:100%;
+	width:10px;
+	top:0;
+	right:0;
+	cursor:e-resize;
+	}
+	#pop_t_l{
+	display:block;
+	position:absolute;
+	height:10px;
+	width:10px;
+	top:0px;
+	left:0px;
+	cursor:nw-resize;
+	}
+	#pop_t_r{
+	display:block;
+	position:absolute;
+	height:10px;
+	width:10px;
+	top:0px;
+	right:0px;
+	cursor:ne-resize;
+	}
+	#pop_b_l{
+	display:block;
+	position:absolute;
+	height:10px;
+	width:10px;
+	bottom:0px;
+	left:0px;
+	cursor:sw-resize;
+	}
+	#pop_b_r{
+	display:block;
+	position:absolute;
+	height:10px;
+	width:10px;
+	bottom:0px;
+	right:0px;
+	cursor:se-resize;
+	}
+	</style>
+</head>
+<body>
+    <div  id="maincontainer">
+	    <div  id="mask" style="opacity:0;"></div>
+	    <div  id="outer" style="visibility:hidden;width:300px;height:200px;">
+		    <header></header>
+			<article>Hello，World！</article>
+			<footer>
+			<button  id="certain">确定</button>
+			<button  id="cancle">取消</button>
+			</footer>
+			<i id="pop_t"></i>
+            <i id="pop_b"></i>
+            <i id="pop_l"></i>
+            <i id="pop_r"></i>
+            <i id="pop_t_l"></i>
+            <i id="pop_t_r"></i>
+            <i id="pop_b_l"></i>
+            <i id="pop_b_r"></i>
+		</div>
+	</div>
+	<button  id="clickBtn">Click!</button>
+    <script>
+	var  clickBtn=document.getElementById("clickBtn");
+	var  outer=document.getElementById("outer");
+	var  header=document.getElementsByTagName("header");
+	var  mask=document.getElementById("mask");
+	var  maincontainer=document.getElementById("maincontainer");
+	var  certain=document.getElementById("certain");
+	var  cancle=document.getElementById("cancle");
+	var  pop_t=document.getElementById("pop_t");
+	var  pop_b=document.getElementById("pop_b");
+	var  pop_l=document.getElementById("pop_l");
+	var  pop_r=document.getElementById("pop_r");
+	var  pop_t_l=document.getElementById("pop_t_l");
+	var  pop_t_r=document.getElementById("pop_t_r");
+	var  pop_b_l=document.getElementById("pop_b_l");
+	var  pop_b_r=document.getElementById("pop_b_r");
+	
+	
+	//拖拽窗口的变量部分
+    var  currentX;
+	var  currentY;
+	var  eleLeft;
+    var  eleTop;
+	var  eleWidth=outer.offsetWidth;
+	var  eleHeight=outer.offsetHeight;
+	var  flag=false;//使得只能在点击后才能发生图片的移动
+	var  centerX=document.documentElement.clientWidth/2;
+	var  centerY=document.documentElement.clientHeight/2;
+	var  eleW=eleWidth/2;
+	var  eleH=eleHeight/2;
+	var  m=centerX-eleW;//窗口发生缩放时算出最左（右）偏移的距离和最上（下）偏移的距离，以便让缩放的窗口也能在屏幕窗口中
+	var  n=centerY-eleH;
+	
+
+	//显示浮出层
+	clickBtn.onclick=function(){
+	outer.style.transform="translate("+m+"px"+","+n+"px"+")";
+	outer.style.visibility="visible";
+	mask.style.opacity="1";
+	outer.style.left=0;//再次点击，回归原位，不然会用mouseup保存下来的偏移量，值得注意的是，translate的偏移并没有在布局上有left或者top的偏移，所以一开始的left和top就是0
+	outer.style.top=0;
+	outer.style.width="300px";
+	outer.style.height="200px";
+	
+	}
+	
+	//退出浮出层
+	function  closePopup(){
+	mask.style.opacity="0";
+	outer.style.visibility="hidden";
+	}
+	mask.addEventListener("click",function(event){
+	closePopup();
+	event.stopPropagation();//阻止浮出层本身点击，然后消失
+	});
+	certain.addEventListener("click",function(event){
+	closePopup();
+	});
+	cancle.addEventListener("click",function(event){
+	closePopup();
+	});
+	
+    //移动窗口
+     function  dragFunction(){
+	 header[0].onmousedown=function(event){
+	 flag=true;
+	 currentX=event.clientX;
+	 currentY=event.clientY;
+     eleLeft=outer.offsetLeft;
+     eleTop=outer.offsetTop;//放在开头的主要原因是，窗口的缩放引起偏移量的变化，通过点击，该函数能够根据当前缩放窗口的偏移量重新计算，防止跑到窗口外面
+	 }
+	 document.onmousemove=function(event){
+	var  nowX=event.clientX;
+	var  nowY=event.clientY;
+	var  disX=nowX-currentX;
+	var  disY=nowY-currentY;
+	var  X=eleLeft+disX;
+    var  Y=eleTop+disY;
+	if(flag==true){
+	if(X<=-m){
+	X=-m;
+    }else  if(X>=m){
+	X=m;
+	}
+	if(Y<=-n){
+	Y=-n;
+	}else if(Y>=n){
+	Y=n;
+	}
+	outer.style.top=Y+"px";
+	outer.style.left=X+"px";
+	}
+	}
+	}
+    dragFunction();
+	
+	
+	//缩放窗口
+	var  eTarget;
+	var  addHeight;
+	var  addWidth;
+	var  addLeft;
+	var  addTop;
+	var  mouseDownX; 
+    var  mouseDownY;
+	var  divH;
+	var  divW;
+	var  T0;
+    var  L0 ;
+	var  scaleflag=false;
+	
+	outer.addEventListener("mousedown",function(event){
+	 scaleflag=true;
+	 mouseDownX=event.clientX;
+	 mouseDownY=event.clientY;
+     divW=outer.offsetWidth;
+	 divH=outer.offsetHeight;
+	 console.log(divH);
+	 eTarget=event.target.id;
+	 console.log(eTarget);
+	 T0 = outer.offsetTop;
+	 L0 = outer.offsetLeft;}
+	)
+	document.body.addEventListener("mouseover",function(event){
+	console.log(scaleflag);
+	var  mouseMoveY=event.clientY;
+	var  mouseMoveX=event.clientX;
+	console.log(event.clientY);
+	if(scaleflag==true){
+	switch (eTarget){
+	
+    case "pop_t":{
+	addHeight = mouseDownY - mouseMoveY+ divH ;
+    addTop=T0 - mouseDownY + mouseMoveY;
+	console.log(addHeight);
+	console.log(addTop);
+	console.log(addHeight);
+	}
+	break;
+	case "pop_r":{
+	addWidth = mouseMoveX - mouseDownX+ divW ;
+	}
+	break;
+	case "pop_b":{
+	addHeight = mouseMoveY - mouseDownY + divH ;
+	}
+	break;
+	case "pop_l":{
+	addWidth = mouseDownX - mouseMoveX + divW ;
+	addLeft=L0-mouseDownX + mouseMoveX;
+	}
+	break;
+	case "pop_t_l":{
+	addWidth = mouseDownX - mouseMoveX + divW ;
+	addHeight = mouseDownY - mouseMoveY+ divH ;
+    addTop =T0 - mouseDownY + mouseMoveY;
+	addLeft=L0-mouseDownX + mouseMoveX;
+	}
+	break;
+	case "pop_t_r":{
+	addWidth = mouseMoveX - mouseDownX + divW ;
+	addHeight = mouseDownY - mouseMoveY + divH ;
+	addTop =T0 - mouseDownY + mouseMoveY;
+	}
+	break;
+	case "pop_b_l":{
+	addHeight = mouseMoveY - mouseDownY + divH ;
+	addWidth = mouseDownX - mouseMoveX+ divW ;
+	addLeft=L0-mouseDownX + mouseMoveX;
+	}
+	break;
+	case "pop_b_r":{
+	addHeight = mouseMoveY - mouseDownY + divH ;
+	addWidth = mouseMoveX - mouseDownX + divW ;
+	}
+	break
+	}
+if (900 >=addWidth &&addWidth >=300) {
+    outer.style.width = addWidth + "px";
+    outer.style.left =addLeft + "px";
+}
+
+if (600 >=addHeight &&addHeight >=200) {
+    outer.style.height =addHeight + "px";
+    outer.style.top = addTop+ "px";
+}
+}
+});
+document.addEventListener("mouseup",function(){
+scaleflag=false;
+   flag=false;
+});
+
+	</script>
+</body>
+</html>
