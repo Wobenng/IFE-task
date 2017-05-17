@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+	<title>task_3_7</title>
+	<style>
+	    table{
+		border-collapse:collapse;
+		}
+	    th,td{
+		border:solid  1px;
+		text-align:center;
+		width:100px;
+		height:50px;
+		}
+		#firstrow{
+		position:relative;
+		}
+		th{
+		background-color:gray;
+		}
+		table  th:nth-child(n+2):after{
+		content:"";
+		position:relative;
+		left:8px;
+		top:25px;
+		width:0px;
+		height:0px;
+		border:10px  solid ;
+		border-color:white  transparent  transparent  transparent;
+		cursor:pointer;
+		}
+		table  th:nth-child(n+2):before{
+		content:"";
+		position:relative;
+		left:60px;
+		top:-20px;
+		width:0px;
+		height:0px;
+		border:10px  solid ;
+		border-color: transparent  transparent white transparent;;
+		cursor:pointer;
+		}
+        button{
+		border:none;
+		width:60px;
+		height:30px;
+		margin:20px;
+		cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+    <table id="ranktable">
+	    <tr  id="firstrow">
+		    <th>姓名</th>
+		    <th>语文</th>
+		    <th>数学</th>
+		    <th>英语</th>
+		    <th>总分</th>
+	    </tr>
+		<tr>
+		    <td>小红</td>
+		    <td>90</td>
+		    <td>89</td>
+		    <td>78</td>
+		    <td>257</td>
+	    </tr>
+		<tr>
+		    <td>小黄</td>
+		    <td>90</td>
+		    <td>95</td>
+		    <td>75</td>
+		    <td>260</td>
+	    </tr>
+		<tr>
+		    <td>小绿</td>
+		    <td>95</td>
+		    <td>80</td>
+		    <td>85</td>
+		    <td>260</td>
+	    </tr>
+	</table>
+	<div>
+	    <button id="deletBtn">删除</button>
+	    <button id="addBtn">添加</button>
+	</div>
+	<script>
+	    var  ranktable=document.getElementById("ranktable");
+		var  tbody=document.getElementsByTagName("tbody");
+		var  rows=ranktable.getElementsByTagName("tr");
+		var  firstrows=document.getElementById("firstrow");
+		var  subjects=firstrows.getElementsByTagName("th");
+		var  deletBtn=document.getElementById("deletBtn");
+		var  addBtn=document.getElementById("addBtn");
+		var  addBtn=document.getElementById("addBtn");
+		var  addBtn=document.getElementById("addBtn");
+        var  data=[];
+		var  dataNumber=[];
+		var flag = false;
+
+		
+		//另一行选中时，清楚前面被选中的id，以及背景色
+		function  reset(){
+		for (var  i=0;i<rows.length;i++){
+		rows[i].style.backgroundColor="white";
+		rows[i].removeAttribute("id");//用来删除上一个被选中行的id
+		}
+		}
+        //为选中行添加id
+	    ranktable.addEventListener("click",function(event){
+        reset();
+        if(event.target.nodeName.toLowerCase()=="td"){
+		var  eParent=event.target.parentNode;
+        eParent.style.backgroundColor="green";
+        eParent.setAttribute("id","selected");
+        }
+        })
+		
+		//删除选中行
+		deletBtn.onclick=function(){
+		var  selected=document.getElementById("selected");
+        var  parentnode=selected.parentNode;
+		parentnode.removeChild(selected);
+		}
+		
+		//表格可编辑
+		 function setWrite() {
+         for (var i = 1; i < rows.length; i++) {
+         var tds = rows[i].getElementsByTagName('td');
+         for (var j = 0; j < tds.length; j++) {
+         tds[j].contentEditable = true;
+         }
+         }
+         }
+		
+		//添加行
+		addBtn.onclick=function(){
+		var  addRow=document.createElement("tr");
+		addRow.innerHTML="<td>"+"</td>"+"<td>"+"</td>"+"<td>"+"</td>"+"<td>"+"</td>"+"<td>"+"</td>";
+		tbody[0].appendChild(addRow);
+		setWrite();
+		}
+        
+		 //存储表格数据
+		function  dataTable(){
+		 var  rows=ranktable.getElementsByTagName("tr");
+		 for (var i = 1; i < rows.length; i++){
+		 data[i-1]=[];
+		 var tds=rows[i].getElementsByTagName("td");
+		 for (var j = 0; j < tds.length; j++){
+		 if(j==0){
+		 var  text=tds[j].innerText;
+		 data[i-1].push(text);
+		 }else{
+		 var  text=parseInt(tds[j].innerText);
+		 data[i-1].push(text);
+		 }
+		}
+		}
+		}
+		
+		//排序
+		for(var  k=1;k<subjects.length;k++){
+		(function(k){
+		subjects[k].onclick=function(){
+		dataTable();
+		console.log(subjects);
+		console.log(data);
+		if(flag){
+		data.sort(function(item1,item2){
+		return  item1[k]-item2[k];
+		})}else{
+		data.sort(function(item1,item2){
+		return  item2[k]-item1[k];
+		})}
+		update();
+		flag=!flag;
+		}
+		})(k);
+		}
+		
+		 //更新表格数据
+		function update(){
+        var  rows=ranktable.getElementsByTagName("tr");
+        for (var i = 1; i < rows.length; i++) {
+        var tds = rows[i].getElementsByTagName('td');
+        for (var j = 0; j < tds.length; j++) {
+            tds[j].innerText = data[i-1][j];
+        }
+        }
+        }
+
+
+
+
+	</script>
+</body>
+</html>
