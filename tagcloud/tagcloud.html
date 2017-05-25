@@ -1,0 +1,188 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>tagcloud</title>
+	<style>
+	    *{
+		list-style:none;
+		text-decoration:none;
+		margin:0px;
+		padding:0px;
+		}
+		#tagcloud{
+		position:relative;
+		width:500px;
+		height:500px;
+		}
+		a{
+		position:absolute;
+		color:#521876;
+		font-weight:bold;
+		}
+	</style>
+</head>
+<body>
+    <div id="tagcloud">
+        <ul>
+            <a href="#">少</a>
+            <a href="#">年</a>
+            <a href="#">不</a>
+            <a href="#">识</a>
+            <a href="#">愁</a>
+            <a href="#">滋</a>
+            <a href="#">味</a>
+            <a href="#">爱</a>
+            <a href="#">上</a>
+            <a href="#">层</a>
+            <a href="#">楼</a>
+            <a href="#">为</a>
+            <a href="#">赋</a>
+            <a href="#">新</a>
+            <a href="#">词</a>
+            <a href="#">强</a>
+            <a href="#">说</a>
+            <a href="#">愁</a>
+            <a href="#">而</a>
+            <a href="#">今</a>
+            <a href="#">识</a>
+            <a href="#">尽</a>
+            <a href="#">愁</a>
+            <a href="#">滋</a>
+            <a href="#">味</a>
+            <a href="#">欲</a>
+            <a href="#">说</a>
+            <a href="#">还</a>
+            <a href="#">休</a>
+            <a href="#">却</a>
+            <a href="#">道</a>
+            <a href="#">天</a>
+            <a href="#">凉</a>
+            <a href="#">好</a>
+            <a href="#">个</a>
+            <a href="#">秋</a>
+        </ul>
+    </div>
+    <script>
+	    var tagcloud=document.getElementById("tagcloud");
+        var links=document.getElementsByTagName("a");
+		var  tag=[];
+		radius=150;
+		var eleX;
+		var eleY;
+        var angle;
+		
+        //均匀分布坐标，以及设置透明度，字体大小，显示球面效果
+		for(var  i=0;i<links.length;i++){
+		    var a=Math.acos(1-(2 * (i+1)) / links.length);
+		    var b=a * Math.sqrt(links.length * Math.PI);
+		    var x=radius * Math.sin(a) * Math.cos(b);
+		    var y=radius * Math.sin(a) * Math.sin(b);
+		    var z=radius * Math.cos(a);
+		    links[i].style.left=y+tagcloud.offsetWidth/2-links[i].offsetWidth/2+"px";
+		    links[i].style.top=x+tagcloud.offsetHeight/2-links[i].offsetHeight/2+"px";
+		    links[i].style.fontSize=((radius+z+60)/(2*radius))*25+"px";  //因为字体大小和透明度是按照z的值按比例计算的，所以加上60防止最下面的字体大小和透明度为零，60可以改变，但是要小于radius
+		    links[i].style.opacity=(radius+z+60)/(2*radius);
+		    tag[i]=[];
+		    tag[i].push(x,y,z);//保存x,y,z的数据
+		}
+		
+		//初始化旋转
+		var time1=setInterval(function(){
+			for(var j=0;j<tag.length;j++){
+			    var y1 =tag[j][1]*Math.cos(Math.PI/500) - tag[j][2]*Math.sin(Math.PI/500);//根据所得出的角度，算出X轴和Y轴的偏移角度
+                var z1 =tag[j][2]*Math.cos(Math.PI/500) + tag[j][1]*Math.sin(Math.PI/500);
+                x = tag[j][0];
+                z = z1;
+				y = y1;
+				tag[j]=[];
+	            tag[j].push(x,y,z);
+		        links[j].style.top=tag[j][0]+tagcloud.offsetHeight/2-links[j].offsetHeight/2+"px";
+			    links[j].style.left=tag[j][1]+tagcloud.offsetWidth/2-links[j].offsetWidth/2+"px";
+		        links[j].style.fontSize=((radius+tag[j][2]+60)/(2*radius))*25+"px";  
+		        links[j].style.opacity=(radius+tag[j][2]+60)/(2*radius);
+			}
+		},15)
+		
+		//鼠标在左边和在右边的所产生的新的值是不一样的,求新坐标的y或者x的公式为 r*cos(a+b)=r*cos(a)cos(b)-r*sin(a)sin(b),同理可得z坐标公式，a为原坐标与Y（横向）的夹角，b为每次旋转的角
+		function  rotateX(){
+		//先计算绕X轴旋转的坐标，再将计算得出的坐标push到数组，供Y轴旋转使用
+		for(var  j=0 ;j<tag.length;j++){
+                var y1 =tag[j][1]*Math.cos((Math.PI/500)*Math.cos(angle)) -tag[j][2]*Math.sin((Math.PI/500)*Math.cos(angle));//根据所得出的角度，算出X轴和Y轴的偏移角度
+                var z1 =tag[j][2]*Math.cos((Math.PI/500)*Math.cos(angle)) + tag[j][1]*Math.sin((Math.PI/500)*Math.cos(angle));
+                x = tag[j][0];
+                z = z1;
+				y = y1;
+				tag[j]=[];
+	            tag[j].push(x,y,z);
+            }
+			}
+			
+			function  rotateY(){
+			//再计算绕Y轴旋转的坐标
+		    for(var  j=0 ;j<tag.length;j++){
+                var x1 =tag[j][0]*Math.cos((Math.PI/500)*Math.sin(angle)) -tag[j][2]*Math.sin((Math.PI/500)*Math.sin(angle));
+                var z1 =tag[j][2]*Math.cos((Math.PI/500)*Math.sin(angle)) + tag[j][0]*Math.sin((Math.PI/500)*Math.sin(angle));
+                x = x1;
+                z = z1;
+				y = tag[j][1];
+				tag[j]=[];
+	            tag[j].push(x,y,z);
+           } 
+		}
+			//鼠标在左边和在右边的所产生的新的值是不一样的,求新坐标的y或者x的公式为 r*cos(a-b)=r*cos(a)cos(b)+r*sin(a)sin(b),同理可得z坐标公式，a为原坐标与Y（横向）的夹角，b为每次旋转的角
+			function  rotateXLeft(){
+		for(var  j=0 ;j<tag.length;j++){
+                var y1 =tag[j][1]*Math.cos((Math.PI/500)*Math.cos(angle)) +tag[j][2]*Math.sin((Math.PI/500)*Math.cos(angle));
+                var z1 =tag[j][2]*Math.cos((Math.PI/500)*Math.cos(angle)) - tag[j][1]*Math.sin((Math.PI/500)*Math.cos(angle));
+                x = tag[j][0];
+                z = z1;
+				y = y1;
+				tag[j]=[];
+	            tag[j].push(x,y,z);
+            }
+			}
+		
+		    function  rotateYLeft(){
+		    for(var  j=0 ;j<tag.length;j++){
+                var x1 =tag[j][0]*Math.cos((Math.PI/500)*Math.sin(angle)) +tag[j][2]*Math.sin((Math.PI/500)*Math.sin(angle));
+                var z1 =tag[j][2]*Math.cos((Math.PI/500)*Math.sin(angle)) -tag[j][0]*Math.sin((Math.PI/500)*Math.sin(angle));
+                x = x1;
+                z = z1;
+				y = tag[j][1];
+				tag[j]=[];
+	            tag[j].push(x,y,z);
+           } 
+		}
+		
+		//鼠标悬浮时的旋转
+		tagcloud.addEventListener("mousemove",function(event){
+		eleX=event.clientX-tagcloud.offsetWidth/2;
+		eleY=event.clientY-tagcloud.offsetHeight/2;
+		angle=Math.atan(eleY/eleX);//根据鼠标所放位置计算角度
+		
+	    setInterval(function(){
+		if(-150<eleX &&  eleX<150  &&   0<eleY &&  eleY<150){  //鼠标在云标签右边的时候各个点的分布
+		    rotateX();
+			rotateY();
+			}else if(-150<eleX &&  eleX<150  &&   -150<eleY &&  eleY<0){  //鼠标在云标签左边的时候各个点的分布
+			rotateXLeft();  
+			rotateYLeft();
+			}
+			for(var j=0;j<tag.length;j++){
+		    links[j].style.top=tag[j][0]+tagcloud.offsetHeight/2-links[j].offsetHeight/2+"px";
+			links[j].style.left=tag[j][1]+tagcloud.offsetWidth/2-links[j].offsetWidth/2+"px";
+		    links[j].style.fontSize=((radius+tag[j][2]+60)/(2*radius))*25+"px";  
+		    links[j].style.opacity=(radius+tag[j][2]+60)/(2*radius);
+			}
+		},15)
+})
+		
+
+		    
+
+	</script>
+
+</body>
+</html>
